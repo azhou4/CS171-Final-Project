@@ -45,7 +45,19 @@ d3.csv("data/cars.csv", function(data) {
         .enter().append("path")
         .attr("d",  path)
         .style("fill", "none")
-        .style("stroke", "#69b3a2")
+        .style("stroke", function (d) {
+            console.log(d)
+            if (d["cylinders"] == "4") {
+                return "#4997B3"
+            }
+            else if (d["cylinders"] == "6") {
+                return "#9CE5FF"
+            }
+            else {
+                return "#B37029"
+            }
+
+        })
         .style("opacity", 0.5)
 
     // Draw the axis:

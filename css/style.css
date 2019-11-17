@@ -2,40 +2,26 @@
 
 body {
 	font-family: 'Raleway', sans-serif;
+	text-align: center;
 }
 
 h1 {
+	text-align: center;
 }
 
-svg {
-	font: 10px sans-serif;
+
+.form-group {
+	margin-left: 40px;
+	margin-right: 40px;
+	text-align: center;
 }
 
-.background path {
-	fill: none;
-	stroke: #ddd;
-	shape-rendering: crispEdges;
+.form-control {
+	width: 200px;
+	text-align: center;
 }
 
-.foreground path {
-	fill: none;
-	stroke: steelblue;
-}
-
-.brush .extent {
-	fill-opacity: .3;
-	stroke: #fff;
-	shape-rendering: crispEdges;
-}
-
-.axis line,
-.axis path {
-	fill: none;
-	stroke: #000;
-	shape-rendering: crispEdges;
-}
-
-.axis text {
-	text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, 0 -1px 0 #fff, -1px 0 0 #fff;
-	cursor: move;
+input {
+	display: block;
+	margin: 0 auto;
 }
