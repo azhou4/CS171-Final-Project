@@ -7,16 +7,35 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+</div>
+<div class="container-fluid">
+    <!-- Interactive visualization -->
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+            <h4>Pipeline Animation </h4>
+            <h2> Wealth Percentile Buckets of Different Races in America
+            </h2>
+    </div>
+    <div class="row" style="margin-top: 40px;">
+        <div class="col-xs-2 col-sm-2 col-sm-offset-1">
+            <div class="race" id="race-stats"></div>
+        </div>
+        <div class="col-xs-6 col-sm-6">
+            <div id="graph-ws" class="graph"></div>
+        </div>
+        <div class="col-xs-2 col-sm-2">
+            <div class="percentile" id="income-percentile"></div>
+        </div>
+    </div>
+</div>
+</div>
+<!-- content -->
 
-    <!-- content -->
-    Hello HTML World!
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/d3.min.js"></script>
 
-    
-    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/d3.min.js"></script>
-
-    <script src="js/main.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>
