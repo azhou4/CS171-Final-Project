@@ -8,9 +8,30 @@
 </head>
 <body>
 
-    <!-- content -->
-    Hello HTML World!
+    <!-- madlibs -->
+    <h1>Where Do You Stack Up? Let's Calculate Your Chances.</h1>
+    <form>
+        <div class="form-group">
+            <label for="Input1">Hi, my name is </label>
+            <input type="name" class="form-control" id="Input1" placeholder="Name">
+        </div>
+        <div class="form-group">
+            <label for="Input2">I grew up in </label>
+            <input type="name" class="form-control" id="Input2" placeholder="Hometown">
+        </div>
+        <div class="form-group">
+            <label for="Input3">My parent's income is </label>
+            <input type="number" class="form-control" id="Input3" placeholder="$">
+        </div>
+        <div class="form-group">
+            <label for="Input4">My race is best described as </label>
+            <input type="text" class="form-control" id="Input4" placeholder="Race">
+        </div>
+    </form>
 
+    <!-- content -->
+    <div id="pcp-chart"></div>
+    <div id="bar-chart"></div>
     <div id="map"></div>
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
@@ -19,5 +40,7 @@
     <script src="js/topojson.v1.min.js"></script>
     <script src="js/map.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/pcp.js"></script>
+    <script src="js/barchart.js"></script>
 </body>
 </html>

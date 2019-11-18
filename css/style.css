@@ -2,9 +2,27 @@
 
 body {
 	font-family: 'Raleway', sans-serif;
+	text-align: center;
 }
 
 h1 {
+	text-align: center;
+}
+
+.form-group {
+	margin-left: 40px;
+	margin-right: 40px;
+	text-align: center;
+}
+
+.form-control {
+	width: 200px;
+	text-align: center;
+}
+
+input {
+	display: block;
+	margin: 0 auto;
 }
 
 .tract:hover {
