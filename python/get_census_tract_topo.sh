@@ -9,10 +9,6 @@ STATES="01 02 04 05 06 08 09 10 11 12 13 15 16 17 18 19 20 21 22 23 24 25 26 27 
 # The ACS 5-Year Estimate vintage.
 YEAR=2014
 
-# The display size.
-WIDTH=960
-HEIGHT=680
-
 # Download the census tract boundaries.
 # Extract the shapefile (.shp) and dBASE (.dbf).
 for STATE in ${STATES}; do
