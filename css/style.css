@@ -9,7 +9,6 @@ h1 {
 	text-align: center;
 }
 
-
 .form-group {
 	margin-left: 40px;
 	margin-right: 40px;
@@ -24,4 +23,8 @@ h1 {
 input {
 	display: block;
 	margin: 0 auto;
+}
+
+.tract:hover {
+	fill: orange;
 }
