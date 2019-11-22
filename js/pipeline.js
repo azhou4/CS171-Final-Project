@@ -1,50 +1,91 @@
-// gets the width of the bounding div element
-var graph_width = d3.select('div#graph-ws').node().getBoundingClientRect().width,
+var margin = {top: 10, right: 10, bottom: 10, left: 10},
+    width = 450 - margin.left - margin.right,
+    height = 480 - margin.top - margin.bottom;
 
-// include an SVG to hold the stats
-var stats_width = d3.select('div.percentile').node().getBoundingClientRect().width,
+// append the svg object to the body of the page
+var svg = d3.select("#pipeline").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform",
+        "translate(" + margin.left + "," + margin.top + ")");
 
-// dimensions for the HTML Canvas element
-var canvas = { w: graph_width, h: 12 * graph_width/16 },
-var margin = { left: 10, bottom: 10, right: 10, top: 10 },
-var text_container = {w: 120, h: 64};
+// Color scale used
+var color = d3.scaleOrdinal(d3.schemeCategory20);
 
+// Set the sankey diagram properties
+var sankey = d3.sankey()
+    .nodeWidth(36)
+    .nodePadding(290)
+    .size([width, height]);
 
-var div_mr = d3.select('#graph-mr')
-    .append('div')
-    .style('position', 'relative')
-    .style('left', '0px')
-    .style('top', '0px')
-    .style('width', canvas.w + 'px')
-    .style('height', canvas.h + 'px')
-    .style('display', 'inline-block');
+// load the data
+d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/data_sankey.json", function(error, graph) {
 
-// Initialize a canvas element
-var regl = createREGL({container: div_mr.node()});
+    // Constructs a new Sankey generator with the default settings.
+    sankey
+        .nodes(graph.nodes)
+        .links(graph.links)
+        .layout(1);
 
-// Origination of the pipe to the destination of the pipe
-// we use the element ID's to target the locations
-var origination = d3.select('#stats-origin-mr')
-    .append('svg')
-    .attr('height', canvas.h)
-    .attr('width', stats_width/2)
-    .style('display', 'inline');
+    // add in the links
+    var link = svg.append("g")
+        .selectAll(".link")
+        .data(graph.links)
+        .enter()
+        .append("path")
+        .attr("class", "link")
+        .attr("d", sankey.link() )
+        .style("stroke-width", function(d) { return Math.max(1, d.dy); })
+        .sort(function(a, b) { return b.dy - a.dy; });
 
-var destination = d3.select('#stats-mr')
-    .append('svg')
-    .attr('height', canvas.h)
-    .attr('width', stats_width)
-    .style('display', 'inline');
+    // add in the nodes
+    var node = svg.append("g")
+        .selectAll(".node")
+        .data(graph.nodes)
+        .enter().append("g")
+        .attr("class", "node")
+        .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
+        .call(d3.drag()
+            .subject(function(d) { return d; })
+            .on("start", function() { this.parentNode.appendChild(this); })
+            .on("drag", dragmove));
 
-//Use this to calculate the size of the pixels on the screen
-var dpi = window.devicePixelRatio;
+    // add the rectangles for the nodes
+    node
+        .append("rect")
+        .attr("height", function(d) { return d.dy; })
+        .attr("width", sankey.nodeWidth())
+        .style("fill", function(d) { return d.color = color(d.name.replace(/ .*/, "")); })
+        .style("stroke", function(d) { return d3.rgb(d.color).darker(2); })
+        // Add hover text
+        .append("title")
+        .text(function(d) { return d.name + "\n" + "There is " + d.value + " stuff in this node"; });
 
-// Have yet to link to dataset
+    // add in the title for the nodes
+    node
+        .append("text")
+        .attr("x", -6)
+        .attr("y", function(d) { return d.dy / 2; })
+        .attr("dy", ".35em")
+        .attr("text-anchor", "end")
+        .attr("transform", null)
+        .text(function(d) { return d.name; })
+        .filter(function(d) { return d.x < width / 2; })
+        .attr("x", 6 + sankey.nodeWidth())
+        .attr("text-anchor", "start");
 
+    // the function for moving the nodes
+    function dragmove(d) {
+        d3.select(this)
+            .attr("transform",
+                "translate("
+                + d.x + ","
+                + (d.y = Math.max(
+                    0, Math.min(height - d.dy, d3.event.y))
+                ) + ")");
+        sankey.relayout();
+        link.attr("d", sankey.link() );
+    }
 
-function graph_flow(a,race, child, parent ) {
-    current_percentile = parent;
-
-}
-
-function income_scale();
+});
