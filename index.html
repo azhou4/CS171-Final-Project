@@ -5,36 +5,102 @@
     <title>D3 Project</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <!-- css for the layout template -->
+    <link rel="stylesheet" href="css/fullpage.css" />
 </head>
 <body>
 
+    <!-- scrolling nav bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand js-scroll-trigger" data-menuanchor="home" href="#home">What Are Your Life Chances?</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" data-menuanchor="section1" href="#section1">The Facts</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" data-menuanchor="section2" href="#section2">Test Your Chances</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" data-menuanchor="section3" href="#section3">Map</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" data-menuanchor="section6" href="#section6">Test6</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" data-menuanchor="section7" href="#section7">Test7</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" data-menuanchor="section8" href="#section8">Test8</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" data-menuanchor="section9" href="#section9">Test9</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+
+
+    <div id="fullpage">
+        <!-- Page 1 -->
+        <div class="section">
+            <h1>Where Do You Stack Up? Let's Calculate Your Chances.</h1>
+
+        </div>
+        <!-- Page 2 -->
+        <div class="section">
+            <form>
+                <div class="form-group">
+                    <label for="Input1">Hi, my name is </label>
+                    <input type="name" class="form-control" id="Input1" placeholder="Name">
+                </div>
+                <div class="form-group">
+                    <label for="Input2">I grew up in </label>
+                    <input type="name" class="form-control" id="Input2" placeholder="Hometown">
+                </div>
+                <div class="form-group">
+                    <label for="Input3">My parent's income is </label>
+                    <input type="number" class="form-control" id="Input3" placeholder="$">
+                </div>
+                <div class="form-group">
+                    <label for="Input4">My race is best described as </label>
+                    <input type="text" class="form-control" id="Input4" placeholder="Race">
+                </div>
+            </form>
+
+        </div>
+        <!-- Page 3 -->
+        <div class="section">
+            <div id="pcp-chart"></div>
+            <div id="bar-chart"></div>
+        </div>
+        <!-- Page 4 -->
+        <div class="section">
+            <div id="map"></div>
+        </div>
+    </div>
+
+
+    <p> END </p>
     <!-- madlibs -->
-    <h1>Where Do You Stack Up? Let's Calculate Your Chances.</h1>
-    <form>
-        <div class="form-group">
-            <label for="Input1">Hi, my name is </label>
-            <input type="name" class="form-control" id="Input1" placeholder="Name">
-        </div>
-        <div class="form-group">
-            <label for="Input2">I grew up in </label>
-            <input type="name" class="form-control" id="Input2" placeholder="Hometown">
-        </div>
-        <div class="form-group">
-            <label for="Input3">My parent's income is </label>
-            <input type="number" class="form-control" id="Input3" placeholder="$">
-        </div>
-        <div class="form-group">
-            <label for="Input4">My race is best described as </label>
-            <input type="text" class="form-control" id="Input4" placeholder="Race">
-        </div>
-    </form>
+
+
+
 
     <!-- content -->
-    <div id="pcp-chart"></div>
-    <div id="bar-chart"></div>
-    <div id="map"></div>
+
+
+
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+    <script src="js/fullpage.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/d3.min.js"></script>
     <script src="js/topojson.v1.min.js"></script>
@@ -42,5 +108,6 @@
     <script src="js/main.js"></script>
     <script src="js/pcp.js"></script>
     <script src="js/barchart.js"></script>
+
 </body>
 </html>
