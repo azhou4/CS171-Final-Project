@@ -3,7 +3,7 @@ var margin = {top: 10, right: 10, bottom: 10, left: 10},
     height = 480 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
-var svg = d3.select("#pipeline").append("svg")
+var sankeysvg = d3.select("#pipeline").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
@@ -29,7 +29,7 @@ d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/d
         .layout(1);
 
     // add in the links
-    var link = svg.append("g")
+    var link = sankeysvg.append("g")
         .selectAll(".link")
         .data(graph.links)
         .enter()
@@ -40,7 +40,7 @@ d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/d
         .sort(function(a, b) { return b.dy - a.dy; });
 
     // add in the nodes
-    var node = svg.append("g")
+    var node = sankeysvg.append("g")
         .selectAll(".node")
         .data(graph.nodes)
         .enter().append("g")
