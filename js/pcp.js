@@ -13,8 +13,23 @@ var pcpsvg = d3.select("#pcp-chart")
         "translate(" + margin.left + "," + margin.top + ")");
 
 // Parse the Data
+
 d3.csv("data/cars.csv", function(data) {
-    console.log("data", data)
+    //console.log("data", data)
+    d3.csv("data/cleaned_outcomes.csv", function(data2) {
+        //console.log("clean census", data2)
+        datakeys = d3.keys(data2[0]).filter(function(d) { return d.includes("kir") })
+        console.log("dimensions", datakeys)
+
+        var dimensions = ["Gender", "Age", "Parental Income Percentile", "Mean Percentile Rank of Household Income"]
+        var y = {}
+        for (i in dimensions) {
+            name = dimensions[i]
+            y[name] = d3.scaleLinear()
+                .domain( d3.extent(data, function(d) { return +d[name]; }) )
+                .range([height, 0])
+        }
+    });
     // Extract the list of dimensions we want to keep in the plot. Here I keep all except the column called Species
     dimensions = d3.keys(data[0]).filter(function(d) { return d != "name" })
 
@@ -46,7 +61,7 @@ d3.csv("data/cars.csv", function(data) {
         .attr("d",  path)
         .style("fill", "none")
         .style("stroke", function (d) {
-            console.log(d)
+            //console.log(d)
             if (d["cylinders"] == "4") {
                 return "#4997B3"
             }

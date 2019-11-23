@@ -129,9 +129,11 @@ function autocomplete(inp, arr) {
 }
 
 
-var race = ["Asian", "White", "Black", "Hispanic", "Other"];
+var race = ["Asian", "White", "Black", "Hispanic", "Native American", "Other"];
 var income = ["0 - 20k", "20 - 40k", "40 - 60k", "60 - 80k", "80 - 100k", "100 - 120k", "120 - 140k", "140 - 200k", "200k+"];
 var hometown = ["New York", "Chicago", "San Francisco", "Boston"];
+var gender = ["Pooled", "Male", "Female"];
 autocomplete(document.getElementById("myInput"), race);
 autocomplete(document.getElementById("Input3"), income);
 autocomplete(document.getElementById("Input2"), hometown);
+autocomplete(document.getElementById("Input4"), gender);
