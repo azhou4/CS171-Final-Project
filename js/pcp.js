@@ -4,7 +4,7 @@ var margin = {top: 30, right: 10, bottom: 10, left: 0},
     height = 400 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
-var svg = d3.select("#pcp-chart")
+var pcpsvg = d3.select("#pcp-chart")
     .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
@@ -39,7 +39,7 @@ d3.csv("data/cars.csv", function(data) {
     }
 
     // Draw the lines
-    svg
+    pcpsvg
         .selectAll("myPath")
         .data(data)
         .enter().append("path")
@@ -61,7 +61,7 @@ d3.csv("data/cars.csv", function(data) {
         .style("opacity", 0.5)
 
     // Draw the axis:
-    svg.selectAll("myAxis")
+    pcpsvg.selectAll("myAxis")
     // For each dimension of the dataset I add a 'g' element:
         .data(dimensions).enter()
         .append("g")
