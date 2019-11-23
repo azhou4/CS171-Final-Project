@@ -21,4 +21,4 @@ var myLayout = new fullpage('#fullpage', {
 });
 
 //methods
-fullpage_api.setAllowScrolling(false);
+fullpage_api.setAllowScrolling(true);
