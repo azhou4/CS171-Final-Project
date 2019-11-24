@@ -28,9 +28,6 @@
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" data-menuanchor="section3" href="#section3">The Survey</a>
                     </li>
-<!--                    <li class="nav-item">-->
-<!--                        <a class="nav-link js-scroll-trigger" data-menuanchor="section4" href="#section4">Your Results</a>-->
-<!--                    </li>-->
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" data-menuanchor="section5" href="#section5">Map</a>
                     </li>
@@ -56,48 +53,71 @@
 
 
         </div>
-        <div class="section">
-            <div id="pipeline"></div>
-        </div>
         <!-- Page 2 -->
         <div class="section">
-            Current Status
+            <p style="border-style: solid;"><br><br><br>Placeholder for introductory text<br><br><br> </p>
+            <div id="pipeline"></div>
+            <p style="border-style: solid;"><br><br><br>Placeholder for Interesting Facts about the viz above<br><br><br> </p>
         </div>
+        <!-- Page 3 -->
         <div class="section">
-            <form>
+            <h2>America's wealth gap is enlarging, with a large amount of wealth unequally distributed in the Top 1%. <br>Does Social Mobility
+            still exist in America?</h2>
+            <p>Watch this video from Politizane to learn more about the Wealth Inequality in America.</p>
+
+            <iframe width="840" height="630"
+                    src="https://www.youtube.com/embed/QPKKQnijnsM">
+            </iframe>
+        </div>
+        <!-- Page 4 -->
+        <div class="section">
+            <form autocomplete="off" action="/action_page.php">
                 <div class="form-group">
                     <label for="Input1">Hi, my name is </label>
                     <input type="name" class="form-control" id="Input1" placeholder="Name">
                 </div>
-                <div class="form-group">
+
+                <div class="autocomplete" style="width:300px;">
                     <label for="Input2">I grew up in </label>
-                    <input type="name" class="form-control" id="Input2" placeholder="Hometown">
+                    <input id="Input2" type="text" name="myHometown" placeholder="Hometown">
                 </div>
-                <div class="form-group">
+                <div class="autocomplete" style="width:300px;">
                     <label for="Input3">My parent's income is </label>
-                    <input type="number" class="form-control" id="Input3" placeholder="$">
+                    <input id="Input3" type="text" name="myIncome" placeholder="Income">
                 </div>
-                <div class="form-group">
-                    <label for="Input4">My race is best described as </label>
-                    <input type="text" class="form-control" id="Input4" placeholder="Race">
-                </div>
+                <div class="autocomplete" style="width:300px;">
+                    <label for="myInput">My race is best described as </label>
+                    <input id="myInput" type="text" name="myRace" placeholder="Race">
+                </div><br><br>
+                <button type="submit" class="btn btn-primary">Submit</button>
             </form>
 
         </div>
-        <!-- Page 3 -->
+        <!-- Page 5 -->
         <div class="section">
-            <div id="pcp-chart"></div>
-            <div id="bar-chart"></div>
+            <div class="row">
+                <div class="col-sm">
+                    <div id="pcp-chart"></div>
+                </div>
+                <div class="col-sm">
+                    <div id="bar-chart"></div>
+                </div>
+                <div class="col-sm">
+
+                </div>
+            </div>
+
         </div>
-        <!-- Page 4 -->
-        <div class="section">
+        <!-- Page 6 -->
+        <div class="section container">
+
             <div id="map"></div>
         </div>
-
+        <!-- Page 7 -->
         <div class="section">
             Does social mobility still exist?
         </div>
-
+        <!-- Page 8 -->
         <div class="section">
             <h1>About Us</h1>
             <p style="border-style: solid;"> <br><br><br>Placeholders for images of the 3 of us! <br><br><br></p><br>
@@ -105,7 +125,7 @@
             can impact later "success" and income, we used this project opportunity to dive deep in learning about whether
             the American Dream of social mobility still exists. </p>
         </div>
-
+        <!-- Page 9 -->
         <div class="section">
             About the Data
         </div>
@@ -123,6 +143,7 @@
     <script src="js/pcp.js"></script>
     <script src="js/barchart.js"></script>
     <script src="js/pipeline.js"></script>
+
 
 </body>
 </html>
