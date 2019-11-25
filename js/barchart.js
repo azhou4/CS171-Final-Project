@@ -19,17 +19,19 @@ var barsvg = d3.select("#bar-chart").append("svg")
     .attr("transform",
         "translate(" + margin.left + "," + margin.top + ")");
 
+
+
+
 // get the data
 d3.csv("data/sales.csv", function(error, data) {
     console.log("sales", data)
     if (error) throw error;
 
     // format the data
-    data.forEach(function(d) {
+    data.forEach(function (d) {
         d.sales = +d.sales;
     });
 
-    // Scale the range of the data in the domains
     barx.domain(data.map(function(d) { return d.salesperson; }));
     bary.domain([0, d3.max(data, function(d) { return d.sales; })]);
 
@@ -42,7 +44,20 @@ d3.csv("data/sales.csv", function(error, data) {
         .attr("width", barx.bandwidth())
         .attr("y", function(d) { return bary(d.sales); })
         .attr("height", function(d) { return barheight - bary(d.sales); })
-        .style("fill", "#4997B3");
+        .style("fill", "#4997B3")
+        .on("mouseover", function() {
+            d3.select(this).select("rect")  //Selects the rect in this group
+                .attr("fill", "#82E0AA");
+        })
+        .on("mouseout", function() {
+            d3.select(this).select("rect")  //Selects the rect in this group
+                .attr("fill", function(d) {
+                    if (d > 20) {
+                        return "DarkOrange";
+                    }
+                    return "#AED6F1";
+                });
+        });;
 
     // add the x Axis
     barsvg.append("g")
@@ -53,4 +68,22 @@ d3.csv("data/sales.csv", function(error, data) {
     barsvg.append("g")
         .call(d3.axisLeft(bary));
 
-});
+    barsvg.append("text")
+        .attr("x", 250)
+        .attr("y", 380)
+        .text("Race");
+
+    barsvg.append("text")
+        .attr("x", -40)
+        .attr("y", -8)
+        .text("Income Percentile");
+
+})
+
+
+
+// Scale the range of the data in the domains
+
+
+
+

@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/fullpage.css" />
 </head>
 <body>
+
     <!-- scrolling nav bar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
         <div class="container">
@@ -54,12 +55,14 @@
         </div>
         <!-- Page 2 -->
         <div class="section">
+
             <h2>The Current Status of the American Population</h2>
             <p style="border-style: solid;"><br><br><br>Move the color nodes around!<br><br><br> </p>
             <div id="pipeline"></div>
             <p style="border-style: solid;"><br><br><br>The visualization above is a sankey diagram that depicts the income percentiles of different races in America. The
                 width of the connections represents a flow rate, and is a proportion of the entire population. The origination nodes represent the races, while the destination
                 nodes represent the income percentile buckets. <br><br><br> </p>
+
         </div>
         <!-- Page 3 -->
         <div class="section">
@@ -73,10 +76,17 @@
         </div>
         <!-- Page 4 -->
         <div class="section">
+            <h1>What Are Your Chances For Social Mobility?</h1>
+            <h2>Input a few of your demographics to explore the factors that affect your social mobility.</h2>
+
             <form autocomplete="off" action="/action_page.php">
                 <div class="form-group">
                     <label for="Input1">Hi, my name is </label>
                     <input type="name" class="form-control" id="Input1" placeholder="Name">
+                </div>
+                <div class="autocomplete" style="width:300px;">
+                    <label for="Input4">My gender identity is best described as </label>
+                    <input id="Input4" type="text" name="myGender" placeholder="Gender">
                 </div>
 
                 <div class="autocomplete" style="width:300px;">
@@ -91,12 +101,16 @@
                     <label for="myInput">My race is best described as </label>
                     <input id="myInput" type="text" name="myRace" placeholder="Race">
                 </div><br><br>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary" onclick="updateVisualization()">Submit</button>
+
             </form>
 
         </div>
         <!-- Page 5 -->
         <div class="section">
+            <h1>How does Gender, Race and Parental Income affect an Individual's Income Percentile?</h1>
+            <br><br><br>
+
             <div class="row">
                 <div class="col-sm">
                     <div id="pcp-chart"></div>
@@ -106,12 +120,14 @@
                 </div>
                 <div class="col-sm">
 
+                    <p style="border-style: solid;"> <br><br><br><br><br><br><br><br><br>Placeholder for summary about this data<br><br><br><br><br><br><br><br><br></p>
                 </div>
             </div>
 
         </div>
         <!-- Page 6 -->
         <div class="section container">
+
             <div class="row">
                 <br>
                 <br>
@@ -154,9 +170,12 @@
         </div>
         <!-- Page 9 -->
         <div class="section">
-            About the Data
+            <h1>About the Data</h1>
+            <br><br><br>
+            <p style="border-style: solid;"> <br><br><br>Placeholder for about where the data is from.<br><br><br></p>
         </div>
     </div>
+
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
     <script src="js/fullpage.js"></script>
