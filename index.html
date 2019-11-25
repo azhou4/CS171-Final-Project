@@ -5,39 +5,162 @@
     <title>D3 Project</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <!-- css for the layout template -->
+    <link rel="stylesheet" href="css/fullpage.css" />
 </head>
 <body>
-
-    <!-- content -->
-    Hello HTML World!
-    <div id="map-selections">
-        <div class="form-group">
-            <label for="race">Race/ethnicity</label>
-            <select class="form-control" id="race" onchange="updateVis()">
-                <option value="asian">Asian</option>
-                <option value="black">Black</option>
-                <option value="hisp">Hispanic</option>
-                <option value="natam">Native American</option>
-                <option value="white">White</option>
-                <option value="other">Other</option>
-            </select>
-            <label for="gender">Gender</label>
-            <select class="form-control" id="gender" onchange="updateVis()">
-                <option value="pooled">All</option>
-                <option value="female">Female</option>
-                <option value="male">Male</option>
-            </select>
+    <!-- scrolling nav bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand js-scroll-trigger" data-menuanchor="home" href="#home">What Are Your Life Chances?</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" data-menuanchor="section1" href="#section1">Social Mobility in America</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" data-menuanchor="section2" href="#section2">The Current Status</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" data-menuanchor="section3" href="#section3">The Survey</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" data-menuanchor="section5" href="#section5">Map</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" data-menuanchor="section6" href="#section6">Does Social Mobility Still Exist?</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" data-menuanchor="section7" href="#section7">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" data-menuanchor="section8" href="#section8">About the Data</a>
+                    </li>
+                </ul>
+            </div>
         </div>
+    </nav>
 
-        <div id="loading">Loading...</div>
+    <div id="fullpage">
+        <!-- Page 1 -->
+        <div class="section" id="introduction">
+            <h1 style="color: white"> Social Mobility in America: <br></h1>
+            <h1 style="color: white">Where Do You Stack Up? Let's Calculate Your Chances.</h1>
+
+
+        </div>
+        <!-- Page 2 -->
+        <div class="section">
+            <p style="border-style: solid;"><br><br><br>Placeholder for introductory text<br><br><br> </p>
+            <div id="pipeline"></div>
+            <p style="border-style: solid;"><br><br><br>Placeholder for Interesting Facts about the viz above<br><br><br> </p>
+        </div>
+        <!-- Page 3 -->
+        <div class="section">
+            <h2>America's wealth gap is enlarging, with a large amount of wealth unequally distributed in the Top 1%. <br>Does Social Mobility
+            still exist in America?</h2>
+            <p>Watch this video from Politizane to learn more about the Wealth Inequality in America.</p>
+
+            <iframe width="840" height="630"
+                    src="https://www.youtube.com/embed/QPKKQnijnsM">
+            </iframe>
+        </div>
+        <!-- Page 4 -->
+        <div class="section">
+            <form autocomplete="off" action="/action_page.php">
+                <div class="form-group">
+                    <label for="Input1">Hi, my name is </label>
+                    <input type="name" class="form-control" id="Input1" placeholder="Name">
+                </div>
+
+                <div class="autocomplete" style="width:300px;">
+                    <label for="Input2">I grew up in </label>
+                    <input id="Input2" type="text" name="myHometown" placeholder="Hometown">
+                </div>
+                <div class="autocomplete" style="width:300px;">
+                    <label for="Input3">My parent's income is </label>
+                    <input id="Input3" type="text" name="myIncome" placeholder="Income">
+                </div>
+                <div class="autocomplete" style="width:300px;">
+                    <label for="myInput">My race is best described as </label>
+                    <input id="myInput" type="text" name="myRace" placeholder="Race">
+                </div><br><br>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+
+        </div>
+        <!-- Page 5 -->
+        <div class="section">
+            <div class="row">
+                <div class="col-sm">
+                    <div id="pcp-chart"></div>
+                </div>
+                <div class="col-sm">
+                    <div id="bar-chart"></div>
+                </div>
+                <div class="col-sm">
+
+                </div>
+            </div>
+
+        </div>
+        <!-- Page 6 -->
+        <div class="section container">
+        <div id="map-selections">
+            <div class="form-group">
+                <label for="race">Race/ethnicity</label>
+                <select class="form-control" id="race" onchange="updateVis()">
+                    <option value="asian">Asian</option>
+                    <option value="black">Black</option>
+                    <option value="hisp">Hispanic</option>
+                    <option value="natam">Native American</option>
+                    <option value="white">White</option>
+                    <option value="other">Other</option>
+                </select>
+                <label for="gender">Gender</label>
+                <select class="form-control" id="gender" onchange="updateVis()">
+                    <option value="pooled">All</option>
+                    <option value="female">Female</option>
+                    <option value="male">Male</option>
+                </select>
+            </div>
+            <div id="loading">Loading...</div>
+        </div>
+        <div id="map"></div>
+      </div>
+        <!-- Page 7 -->
+        <div class="section">
+            Does social mobility still exist?
+        </div>
+        <!-- Page 8 -->
+        <div class="section">
+            <h1>About Us</h1>
+            <p style="border-style: solid;"> <br><br><br>Placeholders for images of the 3 of us! <br><br><br></p><br>
+            <p>We're Amy, Emma, and Kevin, a group of Harvard undergraduates in CS171. Curious about how factors of our upbringing
+            can impact later "success" and income, we used this project opportunity to dive deep in learning about whether
+            the American Dream of social mobility still exists. </p>
+        </div>
+        <!-- Page 9 -->
+        <div class="section">
+            About the Data
+        </div>
     </div>
-    <div id="map"></div>
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+    <script src="js/fullpage.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/d3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/LIB/sankey.js"></script>
     <script src="js/topojson.v1.min.js"></script>
     <script src="js/map.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/pcp.js"></script>
+    <script src="js/barchart.js"></script>
+    <script src="js/pipeline.js"></script>
+
+
 </body>
 </html>
