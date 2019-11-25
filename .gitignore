@@ -1,0 +1,6 @@
+*node_modules*
+*package.json
+*package-lock.json
+*cleaned_outcomes*
+*tract_outcomes*
+*.DS_Store
