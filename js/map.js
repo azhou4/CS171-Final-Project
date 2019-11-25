@@ -3,8 +3,8 @@ class MapVis {
 
     constructor(data) {
         this.data = data;
-        this.width = 1000;
-        this.height = 1000;
+        this.width = 800;
+        this.height = 550;
         const svg = d3.select("#map")
             .append("svg")
             .attr("width", this.width)
