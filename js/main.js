@@ -9,11 +9,13 @@ const convertArrayToObject = (array, key) => {
         };
     }, initialValue);
 };
-
+let map;
 d3.json("data/kir.json", data => {
     // data = convertArrayToObject(data, 'tract');
     // console.log("new data:", data);
-    const map = new MapVis(data);
+    map = new MapVis(data);
     // map.initVis();
 });
+
+const updateVis = () => map.updateVis();
 console.log("Hello JS world!");

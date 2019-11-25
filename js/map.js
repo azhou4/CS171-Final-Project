@@ -46,22 +46,32 @@ class MapVis {
         d3.json("data/census_tract_topo.json", function(error, us) {
             if (error) throw error;
             const tracts = us.objects.tracts;
-            const map = vis.svg.append("g")
+            vis.map = vis.svg.append("g")
                 .selectAll("path")
                 .data(topojson.feature(us, tracts).features);
-            map.enter().append("path")
-                .attr("class", "tract")
-                .attr("d", vis.path)
-                .attr("fill", d => {
-                    // console.log(vis.data[parseInt(d.properties.TRACTCE)]);
-                    if (vis.data[parseInt(d.properties.TRACTCE)]) {
-                        return vis.colorScale(vis.data[parseInt(d.properties.TRACTCE)]["kir_white_pooled_p100"])
-                    } else {
-                        return "gray";
-                    }
-                });
+            vis.updateVis();
             vis.createLegend();
         });
+    }
+
+    updateVis() {
+        const loading = $("#loading");
+        loading.show();
+        const vis = this;
+        console.log("updating vis");
+        const race = $("select#race").val();
+        const gender = $("select#gender").val();
+        vis.map.enter().append("path")
+            .attr("class", "tract")
+            .attr("d", vis.path)
+            .attr("fill", d => {
+                if (vis.data[parseInt(d.properties.TRACTCE)]) {
+                    return vis.colorScale(vis.data[parseInt(d.properties.TRACTCE)]["kir_" + race + "_" + gender + "_p100"]);
+                } else {
+                    return "gray";
+                }
+            });
+        loading.hide();
     }
 
     createLegend() {
