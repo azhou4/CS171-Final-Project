@@ -1,9 +1,23 @@
 /* main JS file */
-d3.csv("data/cleaned_outcomes.csv", data => {
-    console.log(data);
-    const map = new MapVis(data);
+// Taken from https://dev.to/afewminutesofcode/how-to-convert-an-array-into-an-object-in-javascript-25a4
+const convertArrayToObject = (array, key) => {
+    const initialValue = {};
+    return array.reduce((obj, item) => {
+        return {
+            ...obj,
+            [item[key]]: item,
+        };
+    }, initialValue);
+};
+let map;
+d3.json("data/kir.json", data => {
+    // data = convertArrayToObject(data, 'tract');
+    // console.log("new data:", data);
+    map = new MapVis(data);
     // map.initVis();
 });
+
+const updateVis = () => map.updateVis();
 console.log("Hello JS world!");
 
 var myLayout = new fullpage('#fullpage', {
@@ -129,11 +143,9 @@ function autocomplete(inp, arr) {
 }
 
 
-var race = ["Asian", "White", "Black", "Hispanic", "Native American", "Other"];
+var race = ["Asian", "White", "Black", "Hispanic", "Other"];
 var income = ["0 - 20k", "20 - 40k", "40 - 60k", "60 - 80k", "80 - 100k", "100 - 120k", "120 - 140k", "140 - 200k", "200k+"];
 var hometown = ["New York", "Chicago", "San Francisco", "Boston"];
-var gender = ["Pooled", "Male", "Female"];
 autocomplete(document.getElementById("myInput"), race);
 autocomplete(document.getElementById("Input3"), income);
 autocomplete(document.getElementById("Input2"), hometown);
-autocomplete(document.getElementById("Input4"), gender);

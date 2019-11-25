@@ -29,15 +29,15 @@ input {
 	fill: orange;
 }
 
-.link {
-	fill: none;
-	stroke: #000;
-	stroke-opacity: .2;
-	clear: both;
 
-}
 .link:hover {
 	stroke-opacity: .5;
+}
+.flow:hover {
+	stroke-opacity: .75;
+	stroke: #000;
+
+
 }
 
 .group:after {

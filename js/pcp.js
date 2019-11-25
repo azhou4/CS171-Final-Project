@@ -46,12 +46,13 @@ d3.csv("data/cars.csv", function(data) {
                 .range([height, 0])
         }
     }
+
     // Build the X scale -> it find the best position for each Y axis
     x = d3.scalePoint()
         .range([0, width])
         .padding(1)
         .domain(dimensions);
-
+    
     //console.log("test", x[1], y[1]("Native"))
     // Highlight the specie that is hovered
     var highlight = function(d){
@@ -81,11 +82,11 @@ d3.csv("data/cars.csv", function(data) {
 
     // The path function take a row of the csv as input, and return x and y coordinates of the line to draw for this raw.
     function path(d) {
-        return d3.line()(dimensions.map(function(p) {
+        return d3.line()(dimensions.map(function (p) {
             console.log("deline", p, d[p], [x(p), y[p](d[p])])
-            return [x(p), y[p](d[p])]; }));
+            return [x(p), y[p](d[p])];
+        }));
     }
-
     // Draw the lines
     pcpsvg
         .selectAll("myPath")
@@ -110,6 +111,7 @@ d3.csv("data/cars.csv", function(data) {
         .on("mouseover", highlight)
         .on("mouseleave", doNotHighlight )
 
+
     // Draw the axis:
     pcpsvg.selectAll("myAxis")
     // For each dimension of the dataset I add a 'g' element:
@@ -131,3 +133,4 @@ d3.csv("data/cars.csv", function(data) {
         .style("fill", "black")
 
 })
+

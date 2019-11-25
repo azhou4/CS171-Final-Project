@@ -55,9 +55,14 @@
         </div>
         <!-- Page 2 -->
         <div class="section">
-            <p style="border-style: solid;"><br><br><br>Placeholder for introductory text<br><br><br> </p>
+
+            <h2>The Current Status of the American Population</h2>
+            <p style="border-style: solid;"><br><br><br>Move the color nodes around!<br><br><br> </p>
             <div id="pipeline"></div>
-            <p style="border-style: solid;"><br><br><br>Placeholder for Interesting Facts about the viz above<br><br><br> </p>
+            <p style="border-style: solid;"><br><br><br>The visualization above is a sankey diagram that depicts the income percentiles of different races in America. The
+                width of the connections represents a flow rate, and is a proportion of the entire population. The origination nodes represent the races, while the destination
+                nodes represent the income percentile buckets. <br><br><br> </p>
+
         </div>
         <!-- Page 3 -->
         <div class="section">
@@ -73,6 +78,7 @@
         <div class="section">
             <h1>What Are Your Chances For Social Mobility?</h1>
             <h2>Input a few of your demographics to explore the factors that affect your social mobility.</h2>
+
             <form autocomplete="off" action="/action_page.php">
                 <div class="form-group">
                     <label for="Input1">Hi, my name is </label>
@@ -82,6 +88,7 @@
                     <label for="Input4">My gender identity is best described as </label>
                     <input id="Input4" type="text" name="myGender" placeholder="Gender">
                 </div>
+
                 <div class="autocomplete" style="width:300px;">
                     <label for="Input2">I grew up in </label>
                     <input id="Input2" type="text" name="myHometown" placeholder="Hometown">
@@ -95,6 +102,7 @@
                     <input id="myInput" type="text" name="myRace" placeholder="Race">
                 </div><br><br>
                 <button type="submit" class="btn btn-primary" onclick="updateVisualization()">Submit</button>
+
             </form>
 
         </div>
@@ -102,6 +110,7 @@
         <div class="section">
             <h1>How does Gender, Race and Parental Income affect an Individual's Income Percentile?</h1>
             <br><br><br>
+
             <div class="row">
                 <div class="col-sm">
                     <div id="pcp-chart"></div>
@@ -110,6 +119,7 @@
                     <div id="bar-chart"></div>
                 </div>
                 <div class="col-sm">
+
                     <p style="border-style: solid;"> <br><br><br><br><br><br><br><br><br>Placeholder for summary about this data<br><br><br><br><br><br><br><br><br></p>
                 </div>
             </div>
@@ -118,13 +128,37 @@
         <!-- Page 6 -->
         <div class="section container">
 
-            <div id="map"></div>
+            <div class="row">
+                <br>
+                <br>
+                <br>
+        <div id="map-selections">
+            <div class="form-group">
+                <label for="race">Race/ethnicity</label>
+                <select class="form-control" id="race" onchange="updateVis()">
+                    <option value="asian">Asian</option>
+                    <option value="black">Black</option>
+                    <option value="hisp">Hispanic</option>
+                    <option value="natam">Native American</option>
+                    <option value="white">White</option>
+                    <option value="other">Other</option>
+                </select>
+            </div><div class="form-group">
+                <label for="gender">Gender</label>
+                <select class="form-control" id="gender" onchange="updateVis()">
+                    <option value="pooled">All</option>
+                    <option value="female">Female</option>
+                    <option value="male">Male</option>
+                </select>
+            </div>
+            <div id="loading">Loading...</div>
         </div>
+        <div id="map"></div>
+        </div>
+      </div>
         <!-- Page 7 -->
         <div class="section">
-            <h1>Does social mobility still exist?</h1>
-            <br><br><br><br><br><br>
-            <p style="border-style: solid;"> <br><br><br><br><br><br><br><br><br><br><br><br>Placeholder for image and summary of findings <br><br><br><br><br><br><br><br><br><br><br><br></p>
+            Does social mobility still exist?
         </div>
         <!-- Page 8 -->
         <div class="section">
