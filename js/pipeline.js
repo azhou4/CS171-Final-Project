@@ -1,91 +1,92 @@
-var margin = {top: 10, right: 10, bottom: 10, left: 10},
-    width = 450 - margin.left - margin.right,
-    height = 480 - margin.top - margin.bottom;
+var page_margin = {top: 10, right: 10, bottom: 10, left: 10},
+    sankey_width = 450 - page_margin.left - page_margin.right,
+    sankey_height = 480 - page_margin.top - page_margin.bottom;
 
 // append the svg object to the body of the page
 var sankeysvg = d3.select("#pipeline").append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
+    .attr("height", height + page_margin.top + page_margin.bottom + 400)
+    .attr("width", width + page_margin.left + page_margin.right + 200 )
     .append("g")
     .attr("transform",
-        "translate(" + margin.left + "," + margin.top + ")");
+        "translate(" + page_margin.left + "," + page_margin.top + ")");
 
 // Color scale used
 var color = d3.scaleOrdinal(d3.schemeCategory20);
 
 // Set the sankey diagram properties
 var sankey = d3.sankey()
-    .nodeWidth(36)
     .nodePadding(290)
-    .size([width, height]);
+    .nodeWidth(36)
+    .size([sankey_width, sankey_height]);
 
 // load the data
-d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/data_sankey.json", function(error, graph) {
+d3.json("data/pipelineData.json", function(error, graph) {
 
-    // Constructs a new Sankey generator with the default settings.
+
+    //use the default settings for sankey
+
     sankey
         .nodes(graph.nodes)
         .links(graph.links)
         .layout(1);
 
-    // add in the links
-    var link = sankeysvg.append("g")
-        .selectAll(".link")
-        .data(graph.links)
-        .enter()
-        .append("path")
-        .attr("class", "link")
-        .attr("d", sankey.link() )
-        .style("stroke-width", function(d) { return Math.max(1, d.dy); })
-        .sort(function(a, b) { return b.dy - a.dy; });
-
-    // add in the nodes
+    // create the buckets
     var node = sankeysvg.append("g")
         .selectAll(".node")
         .data(graph.nodes)
         .enter().append("g")
         .attr("class", "node")
-        .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
+        .attr("transform", function(a) { return "translate(" + a.x + "," + a.y + ")"; })
         .call(d3.drag()
-            .subject(function(d) { return d; })
+            .subject(function(a) { return a; })
             .on("start", function() { this.parentNode.appendChild(this); })
-            .on("drag", dragmove));
+            .on("drag", nodeSlide));
 
-    // add the rectangles for the nodes
+    // create the links between the buckets of data
+    var flow = sankeysvg.append("g")
+        .selectAll(".link")
+        .data(graph.links)
+        .enter()
+        .append("path")
+        .attr("class", "flow")
+        .attr("d", sankey.link() )
+        .style("stroke-width", function(d) { return Math.max(1, d.dy); })
+        .sort(function(begin, end) { return end.dy - begin.dy; });
+
+
+
+    // add the rectangles for the nodes and create text that hovers
     node
         .append("rect")
         .attr("height", function(d) { return d.dy; })
         .attr("width", sankey.nodeWidth())
-        .style("fill", function(d) { return d.color = color(d.name.replace(/ .*/, "")); })
-        .style("stroke", function(d) { return d3.rgb(d.color).darker(2); })
-        // Add hover text
-        .append("title")
-        .text(function(d) { return d.name + "\n" + "There is " + d.value + " stuff in this node"; });
+        .style("fill", function(x) { return x.color = color(x.race.replace(/ .*/, "")); })
+        .style("stroke", function(x) { return d3.rgb(x.color); })
+        .text(function(a) { return a.race + "\n"  + a.value })
+        .append("title");
+
+    function nodeSlide(d) {
+        d3.select(this)
+            .attr("transform", "translate("  + (d.x) + ","  + (d.y = Math.max(0, Math.min(height - d.dy + 300, d3.event.y))
+            ) + ")");
+        sankey.relayout();
+        flow.attr("d", sankey.link() );
+    }
 
     // add in the title for the nodes
     node
         .append("text")
-        .attr("x", -6)
-        .attr("y", function(d) { return d.dy / 2; })
+        .attr("x", -5)
+        .attr("y", function(a) { return a.dy / 2; })
         .attr("dy", ".35em")
         .attr("text-anchor", "end")
         .attr("transform", null)
-        .text(function(d) { return d.name; })
-        .filter(function(d) { return d.x < width / 2; })
-        .attr("x", 6 + sankey.nodeWidth())
+        .text(function(a) { return a.race; })
+        .filter(function(a) { return a.x < width / 2; })
+        .attr("x", 5 + sankey.nodeWidth())
         .attr("text-anchor", "start");
 
     // the function for moving the nodes
-    function dragmove(d) {
-        d3.select(this)
-            .attr("transform",
-                "translate("
-                + d.x + ","
-                + (d.y = Math.max(
-                    0, Math.min(height - d.dy, d3.event.y))
-                ) + ")");
-        sankey.relayout();
-        link.attr("d", sankey.link() );
-    }
+
 
 });
