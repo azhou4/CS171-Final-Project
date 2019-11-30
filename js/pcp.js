@@ -52,7 +52,7 @@ d3.csv("data/cars.csv", function(data) {
         .range([0, width])
         .padding(1)
         .domain(dimensions);
-    
+
     //console.log("test", x[1], y[1]("Native"))
     // Highlight the specie that is hovered
     var highlight = function(d){
