@@ -1,28 +1,86 @@
 /* custom css rules */
+@font-face {
+	font-family: GothamLight;
+	src: url("../fonts/Gotham-Light.ttf");
+}
+
+@font-face {
+	font-family: GothamBold;
+	src: url("../fonts/Gotham-Bold.ttf");
+}
+
+@font-face {
+	font-family: RobotoLight;
+	src: url("../fonts/Roboto-Light.ttf");
+}
 
 body {
-	font-family: 'Raleway', sans-serif;
+	font-family: "GothamLight";
 	text-align: center;
+}
+
+
+.title {
+	font-family: "GothamBold";
+	color:white;
+	font-size: 80px;
+}
+
+.subtitle {
+	font-family:"GothamLight";
+	color:white;
+}
+
+.small-title {
+	font-family:"RobotoLight";
+}
+
+.nav-item {
+	font-family:"RobotoLight";
+}
+
+.page-title {
+	font-family:"GothamBold";
 }
 
 h1 {
 	text-align: center;
+	font-family: "GothamBold";
+}
+
+h2 {
+	font-family:"GothamLight";
 }
 
 .form-group {
 	margin-left: 40px;
 	margin-right: 40px;
 	text-align: center;
+	font-family: "RobotoLight";
+	font-size: 24px;
 }
 
 .form-control {
 	width: 200px;
 	text-align: center;
+	font-family: "RobotoLight";
+	font-size: 24px;
+}
+
+.autocomplete {
+	font-family: "RobotoLight";
+	font-size: 24px;
+}
+
+.btn {
+	font-family:"GothamLight";
 }
 
 input {
 	display: block;
 	margin: 0 auto;
+	font-family: "RobotoLight";
+	font-size: 24px;
 }
 
 .tract:hover {
@@ -49,6 +107,8 @@ input {
 p {
 	margin-left: 100px;
 	margin-right: 100px;
+	font-family:"GothamLight";
+	font-size:24px;
 }
 
 #introduction {
@@ -58,7 +118,8 @@ p {
 /* Autocomplete */
 * { box-sizing: border-box; }
 body {
-	font: 16px Arial;
+	font-family: "RobotoLight";
+	font-size: 16px;
 }
 .autocomplete {
 	/*the container must be positioned relative:*/
