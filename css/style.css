@@ -166,3 +166,16 @@ input[type=submit] {
 	background-color: DodgerBlue !important;
 	color: #ffffff;
 }
+.d3-tip {
+	background-color: #111f5f;
+	border-radius: 5px;
+	padding: 10px;
+	color: white;
+	font-size: .8em;
+}
+.state {
+	stroke-width: 10;
+}
+.tract {
+	stroke-width: .25;
+}

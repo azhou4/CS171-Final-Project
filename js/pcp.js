@@ -95,7 +95,6 @@ d3.csv("data/cars.csv", function(data) {
         .attr("d",  path)
         .style("fill", "none")
         .style("stroke", function (d) {
-            console.log(d)
             if (d["cylinders"] == "4") {
                 return "#4997B3"
             }

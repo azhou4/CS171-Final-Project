@@ -132,6 +132,7 @@
                 <br>
                 <br>
                 <br>
+                <h1>Probability of Reaching the Top 20% of the National Income Distribution</h1>
         <div id="map-selections">
             <div class="form-group">
                 <label for="race">Race/ethnicity</label>
@@ -153,7 +154,8 @@
             </div>
             <div id="loading">Loading...</div>
         </div>
-        <div id="map"></div>
+                <div id="map-container"></div>
+                    <div id="map"></div>
         </div>
       </div>
         <!-- Page 7 -->
@@ -162,6 +164,11 @@
             <br><br><br><br>
             <p style="border-style: solid;"> <br><br><br><br><br><br><br><br><br>Placeholder for summary about this<br><br><br><br><br><br><br><br><br></p>
         </div>
+            <div id="gmap" style="width: 320px; height: 480px;"></div>
+            <div>
+                <input id="address" type="textbox" value="Sydney, NSW">
+                <input type="button" value="Encode" onclick="codeAddress()">
+            </div>        </div>
         <!-- Page 8 -->
         <div class="section">
             <h1>About Us</h1>
@@ -179,18 +186,29 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
     <script src="js/fullpage.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/d3.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/LIB/sankey.js"></script>
+    <script src="js/geocode.js"></script>
+    <script type='text/javascript' src='config.js'></script>
+    <script>
+        window.addEventListener('load',function(){
+            const script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.src = "https://maps.googleapis.com/maps/api/js?key=" + config.GEO_API_KEY + "&callback=initialize";
+            document.body.appendChild(script);
+        });
+    </script>
     <script src="js/topojson.v1.min.js"></script>
+    <script src="js/d3-tip.js"></script>
+    <script src="js/helpers.js"></script>
     <script src="js/map.js"></script>
     <script src="js/main.js"></script>
     <script src="js/pcp.js"></script>
     <script src="js/barchart.js"></script>
     <script src="js/pipeline.js"></script>
-
-
 </body>
 </html>
