@@ -14,9 +14,14 @@ class MapVis {
             }))
             .append("g");
         this.svg = svg;
-        this.projection = d3.geoAlbersUsa()
+        this.lat = 36;
+        this.lon = 120;
+        this.projection = d3.geoAlbers()
+            // .center([0, this.lat])
+            // .rotate([this.lon, 0])
+            // .parallels([40, 45])
             .translate([this.width/2, this.height/2])
-            .scale(1500);
+            .scale(1000);
         // this.projection = null;
         this.path = d3.geoPath()
             .projection(this.projection);
@@ -94,6 +99,17 @@ class MapVis {
             .on("mouseover", tool_tip.show)
             .on("mouseout", tool_tip.hide);
         loading.hide();
+        // helpful link for markers https://stackoverflow.com/questions/21397608/put-markers-to-a-map-generated-with-topojson-and-d3-js
+        const marks = [{long: -75, lat: 43},{long: -78, lat: 41},{long: -70, lat: 53}];
+        vis.svg.selectAll(".mark")
+            .data(marks)
+            .enter()
+            .append("image")
+            .attr('class','mark')
+            .attr('width', 20)
+            .attr('height', 20)
+            .attr("xlink:href",'https://cdn3.iconfinder.com/data/icons/softwaredemo/PNG/24x24/DrawingPin1_Blue.png')
+            .attr("transform", d => `translate(${vis.projection([d.long,d.lat])})`);
     }
 
     createLegend() {
