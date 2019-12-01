@@ -6,3 +6,5 @@
 *.DS_Store
 config.js
 *county_outcomes.csv
+*.zip
+*.idea
