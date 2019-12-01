@@ -1,4 +1,3 @@
-// import {translateRaceCode} from "./helpers";
 
 class MapVis {
 
@@ -21,7 +20,6 @@ class MapVis {
         // this.projection = null;
         this.path = d3.geoPath()
             .projection(this.projection);
-        // TODO: rerender legend for different outcomes
         const lowColor = "#B37029";
         const highColor = "#4997B3";
         this.colorScale = d3.scaleLinear()
@@ -45,6 +43,7 @@ class MapVis {
 
     initVis() {
         const vis = this;
+        vis.createLegend();
         d3.json("data/counties-10m.json", function(error, us) {
             if (error) throw error;
             const counties = us.objects.counties;
@@ -52,7 +51,6 @@ class MapVis {
                 .selectAll("path")
                 .data(topojson.feature(us, counties).features);
             vis.updateVis();
-            vis.createLegend();
         });
     }
 
@@ -75,7 +73,6 @@ class MapVis {
                         html += "NA</td></tr>";
                     }
                 }
-
                 html += "</table></div>";
                 return html
             });
@@ -99,9 +96,13 @@ class MapVis {
 
     createLegend() {
         const vis = this;
-        const legend = vis.svg.append("g")
+        const legend = d3.select("#map-container")
+            .append("svg")
+            .attr("width", 300)
+            .attr("height", 50)
+            .append("g")
             .attr("class", "legend")
-            .attr("transform", "translate(300, 0)");
+            .attr("transform", "translate(0, 0)");
         legend.selectAll('rect')
             .data(vis.legendData)
             .enter()
@@ -111,7 +112,6 @@ class MapVis {
             .attr("height", 10)
             .attr("width", vis.sectionWidth)
             .attr('fill', function(d, i) { return vis.legendColorScale(i)});
-        // TODO: rerender legend for different outcomes
         legend.append("text").text(() => "0%")
             .attr("transform","translate(0,30)")
             .style("fill", "black")
