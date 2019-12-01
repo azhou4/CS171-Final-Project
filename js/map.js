@@ -1,3 +1,4 @@
+// import {translateRaceCode} from "./helpers";
 
 class MapVis {
 
@@ -42,8 +43,6 @@ class MapVis {
         this.initVis();
     }
 
-
-
     initVis() {
         const vis = this;
         d3.json("data/counties-10m.json", function(error, us) {
@@ -63,6 +62,24 @@ class MapVis {
         const vis = this;
         const race = $("select#race").val();
         const gender = $("select#gender").val();
+        const tool_tip = d3.tip()
+            .attr("class", "d3-tip")
+            .offset([0, 0])
+            .html(function(d) {
+                let html = "<div class=''><h4>" + d.properties.name + " County</h4><table>";
+                for (let raceCode of ['asian', 'black', 'hisp', 'natam', 'white']) {
+                    html += "<tr><td>" + translateRaceCode(raceCode) + "</td><td>";
+                    if (vis.data["kir_top20_" + raceCode + "_" + gender + "_p100"][d.id]) {
+                        html += Math.floor(100 * vis.data["kir_top20_" + raceCode + "_" + gender + "_p100"][d.id]) + "%</td></tr>"
+                    } else {
+                        html += "NA</td></tr>";
+                    }
+                }
+
+                html += "</table></div>";
+                return html
+            });
+        vis.svg.call(tool_tip);
         vis.map.enter().append("path")
             .attr("class", "tract")
             .attr("d", vis.path)
@@ -74,7 +91,9 @@ class MapVis {
                 }
             })
             .attr("stroke", "white")
-            .attr("stroke-width", .25);
+            .attr("stroke-width", .25)
+            .on("mouseover", tool_tip.show)
+            .on("mouseout", tool_tip.hide);
         loading.hide();
     }
 
