@@ -2,7 +2,7 @@ var geocoder;
 var gmap;
 function initialize() {
     geocoder = new google.maps.Geocoder();
-    var latlng = new google.maps.LatLng(-34.397, 150.644);
+    var latlng = new google.maps.LatLng(36.644, -120.397);
     var mapOptions = {
         zoom: 8,
         center: latlng
@@ -15,6 +15,7 @@ function codeAddress() {
     geocoder.geocode( { 'address': address}, function(results, status) {
         if (status == 'OK') {
             gmap.setCenter(results[0].geometry.location);
+            console.log(results[0].geometry.location)
             var marker = new google.maps.Marker({
                 map: gmap,
                 position: results[0].geometry.location

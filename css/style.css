@@ -112,3 +112,9 @@ input[type=submit] {
 	color: white;
 	font-size: .8em;
 }
+.state {
+	stroke-width: 10;
+}
+.tract {
+	stroke-width: .25;
+}

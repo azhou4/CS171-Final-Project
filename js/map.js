@@ -46,10 +46,9 @@ class MapVis {
         vis.createLegend();
         d3.json("data/counties-10m.json", function(error, us) {
             if (error) throw error;
-            const counties = us.objects.counties;
+            vis.us = us;
             vis.map = vis.svg.append("g")
-                .selectAll("path")
-                .data(topojson.feature(us, counties).features);
+                .selectAll("path");
             vis.updateVis();
         });
     }
@@ -58,6 +57,10 @@ class MapVis {
         const loading = $("#loading");
         loading.show();
         const vis = this;
+        vis.map.data(topojson.feature(vis.us, vis.us.objects.states).features).enter().append("path")
+            .attr("class", "state")
+            .attr("d", vis.path)
+            .attr("stroke", "white");
         const race = $("select#race").val();
         const gender = $("select#gender").val();
         const tool_tip = d3.tip()
@@ -77,7 +80,7 @@ class MapVis {
                 return html
             });
         vis.svg.call(tool_tip);
-        vis.map.enter().append("path")
+        vis.map.data(topojson.feature(vis.us, vis.us.objects.counties).features).enter().append("path")
             .attr("class", "tract")
             .attr("d", vis.path)
             .attr("fill", d => {
@@ -88,7 +91,6 @@ class MapVis {
                 }
             })
             .attr("stroke", "white")
-            .attr("stroke-width", .25)
             .on("mouseover", tool_tip.show)
             .on("mouseout", tool_tip.hide);
         loading.hide();
