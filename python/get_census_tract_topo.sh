@@ -12,30 +12,34 @@ YEAR=2014
 # Download the census tract boundaries.
 # Extract the shapefile (.shp) and dBASE (.dbf).
 for STATE in ${STATES}; do
-  if [ ! -f cb_${YEAR}_${STATE}_tract_500k.shp ]; then
-    curl -o cb_${YEAR}_${STATE}_tract_500k.zip \
-      "https://www2.census.gov/geo/tiger/GENZ${YEAR}/shp/cb_${YEAR}_${STATE}_tract_500k.zip"
+  if [ ! -f tl_2019_${STATE}_cousub.shp ]; then
+    curl -o tl_2019_${STATE}_cousub.zip \
+          "https://www2.census.gov/geo/tiger/TIGER2019/COUSUB/tl_2019_${STATE}_cousub.zip"
+#      "https://www2.census.gov/geo/tiger/GENZ${YEAR}/shp/cb_${YEAR}_${STATE}_tract_500k.zip" # census-tract level
     unzip -o \
-      cb_${YEAR}_${STATE}_tract_500k.zip \
-      cb_${YEAR}_${STATE}_tract_500k.shp \
-      cb_${YEAR}_${STATE}_tract_500k.dbf
+      tl_2019_${STATE}_cousub.zip \
+      tl_2019_${STATE}_cousub.shp \
+      tl_2019_${STATE}_cousub.dbf
+#      cb_${YEAR}_${STATE}_tract_500k.zip \
+#      cb_${YEAR}_${STATE}_tract_500k.shp \
+#      cb_${YEAR}_${STATE}_tract_500k.dbf
   fi
 done
 
 # Construct TopoJSON.
-if [ ! -f census_tract_topo.json ]; then
+if [ ! -f county_topo.json ]; then
   geo2topo -n \
     tracts=<(for STATE in ${STATES}; do \
-          shp2json -n cb_${YEAR}_${STATE}_tract_500k.shp \
+          shp2json -n tl_2019_${STATE}_cousub.shp \
             | geoproject -n "${PROJECTION}" \
             | ndjson-map 'd.id = d.properties.GEOID, d'
       done) \
-    | topomerge -k 'd.id.slice(0, 5)' counties=tracts \
     | topomerge -k 'd.id.slice(0, 2)' states=counties \
     | topomerge --mesh -f 'a !== b' counties=counties \
     | topomerge --mesh -f 'a !== b' states=states \
     | toposimplify -p 1 -f \
     | topoquantize 1e5 \
-    > census_tract_topo.json
+    > county_topo.json
 fi
+#    | topomerge -k 'd.id.slice(0, 5)' counties=tracts \ this line was right after doone
 

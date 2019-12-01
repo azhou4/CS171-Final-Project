@@ -14,11 +14,15 @@ class MapVis {
             }))
             .append("g");
         this.svg = svg;
-
+        this.projection = d3.geoAlbersUsa()
+            .translate([this.width/2, this.height/2])
+            .scale(1500);
+        // this.projection = null;
         this.path = d3.geoPath()
-            .projection(null);
-        const lowColor = "#4997B3";
-        const highColor = "#B37029";
+            .projection(this.projection);
+        // TODO: rerender legend for different outcomes
+        const lowColor = "#B37029";
+        const highColor = "#4997B3";
         this.colorScale = d3.scaleLinear()
             .domain([0,1])
             .range([lowColor, highColor])
@@ -42,13 +46,12 @@ class MapVis {
 
     initVis() {
         const vis = this;
-
-        d3.json("data/census_tract_topo.json", function(error, us) {
+        d3.json("data/counties-10m.json", function(error, us) {
             if (error) throw error;
-            const tracts = us.objects.tracts;
+            const counties = us.objects.counties;
             vis.map = vis.svg.append("g")
                 .selectAll("path")
-                .data(topojson.feature(us, tracts).features);
+                .data(topojson.feature(us, counties).features);
             vis.updateVis();
             vis.createLegend();
         });
@@ -58,19 +61,20 @@ class MapVis {
         const loading = $("#loading");
         loading.show();
         const vis = this;
-        console.log("updating vis");
         const race = $("select#race").val();
         const gender = $("select#gender").val();
         vis.map.enter().append("path")
             .attr("class", "tract")
             .attr("d", vis.path)
             .attr("fill", d => {
-                if (vis.data[parseInt(d.properties.TRACTCE)]) {
-                    return vis.colorScale(vis.data[parseInt(d.properties.TRACTCE)]["kir_" + race + "_" + gender + "_p100"]);
+                if (vis.data["kir_top20_" + race + "_" + gender + "_p100"][d.id]) {
+                    return vis.colorScale(vis.data["kir_top20_" + race + "_" + gender + "_p100"][d.id]);
                 } else {
                     return "gray";
                 }
-            });
+            })
+            .attr("stroke", "white")
+            .attr("stroke-width", .25);
         loading.hide();
     }
 
@@ -88,6 +92,7 @@ class MapVis {
             .attr("height", 10)
             .attr("width", vis.sectionWidth)
             .attr('fill', function(d, i) { return vis.legendColorScale(i)});
+        // TODO: rerender legend for different outcomes
         legend.append("text").text(() => "0%")
             .attr("transform","translate(0,30)")
             .style("fill", "black")

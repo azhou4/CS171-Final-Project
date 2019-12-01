@@ -4,3 +4,5 @@
 *cleaned_outcomes*
 *tract_outcomes*
 *.DS_Store
+config.js
+*county_outcomes.csv
