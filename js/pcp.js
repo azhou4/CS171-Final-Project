@@ -84,15 +84,8 @@ d3.csv("data/cars.csv", function(data) {
 
 
     // The path function take a row of the csv as input, and return x and y coordinates of the line to draw for this raw.
-    function path(d) {
-        return d3.line()(dimensions.map(function (p) {
-            console.log("deline", p, d[p], [x(p), y[p](d[p])])
-            if (p === "Gender" || p === "Race") {
-                return [x(p), y[p](d[p]) + y[p].bandwidth() / 2];
-            }
-            return [x(p), y[p](d[p])];
-        }));
-    }
+    const path = d => d3.line()(dimensions.map(p =>
+            p === "Gender" || p === "Race" ? [x(p), y[p](d[p]) + y[p].bandwidth() / 2] : [x(p), y[p](d[p])]));
     // Draw the lines
     pcpsvg
         .selectAll("myPath")
