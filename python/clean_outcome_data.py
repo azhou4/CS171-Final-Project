@@ -5,7 +5,8 @@ races = ['white', 'black', 'hisp', 'asian', 'natam', 'other']
 genders = ['pooled', 'male', 'female']
 pctiles = ['p1', 'p25', 'p50', 'p75', 'p100']
 # outcomes = ['kfr', 'kfr_top01', 'kfr_top20', 'kir', 'kir_top01', 'kir_top20']
-outcomes = ['kir_top20']
+outcomes = ['kir']
+# outcomes = ['kir_top20']
 # education_outcomes = ['coll', 'comcoll', 'grad']
 # incarceration_outcomes = ['jail']
 # outcomes.append(education_outcomes).append(incarceration_outcomes)
@@ -27,4 +28,4 @@ df = df.drop(['state', 'county'], axis=1)
 df = df.set_index('code')
 df = df.loc[~df.index.duplicated(keep='first')]
 # df.apply(lambda x: [x.dropna()], axis=0).to_json("data/kir_county3.json", orient="columns")
-df.to_json("data/kir_county2.json")
+df.to_json("data/kir_county.json")
