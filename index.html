@@ -78,9 +78,7 @@
         <div class="section">
             <h1 class="page-title">What Are Your Chances For Social Mobility?</h1>
             <h2>Input a few of your demographics to explore the factors that affect your social mobility.</h2>
-
-            <form autocomplete="off" action="/action_page.php">
-                <div class="form-group">
+             <div class="form-group">
                     <label for="Input1">Hi, my name is </label>
                     <input type="name" class="form-control" id="Input1" placeholder="Name">
                 </div>
@@ -90,8 +88,8 @@
                 </div>
 
                 <div class="autocomplete" style="width:300px;">
-                    <label for="Input2">I grew up in </label>
-                    <input id="Input2" type="text" name="myHometown" placeholder="Hometown">
+                    <label for="hometown">I grew up in </label>
+                    <input id="hometown" type="text" name="myHometown" placeholder="Hometown">
                 </div>
                 <div class="autocomplete" style="width:300px;">
                     <label for="Input3">My parent's income is </label>
@@ -101,10 +99,7 @@
                     <label for="myInput">My race is best described as </label>
                     <input id="myInput" type="text" name="myRace" placeholder="Race">
                 </div><br><br>
-                <button type="submit" class="btn btn-primary" onclick="updateVisualization()">Submit</button>
-
-            </form>
-
+                <button type="submit" class="btn btn-primary" onclick="getLatLong()">Submit</button>
         </div>
         <!-- Page 5 -->
         <div class="section">
@@ -167,7 +162,7 @@
             <div id="gmap" style="width: 320px; height: 480px;"></div>
             <div>
                 <input id="address" type="textbox" value="Sydney, NSW">
-                <input type="button" value="Encode" onclick="codeAddress()">
+                <input type="button" value="Encode" onclick="getLatLong()">
             </div>        </div>
         <!-- Page 8 -->
         <div class="section">
