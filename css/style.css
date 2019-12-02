@@ -31,6 +31,11 @@ body {
 	color:white;
 }
 
+.margin {
+	margin-left: 150px;
+	margin-right: 150px;
+}
+
 .small-title {
 	font-family:"RobotoLight";
 }

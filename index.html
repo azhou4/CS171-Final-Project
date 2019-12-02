@@ -29,17 +29,20 @@
                         <a class="nav-link js-scroll-trigger" data-menuanchor="section3" href="#section3">The Survey</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" data-menuanchor="section5" href="#section5">Map</a>
+                        <a class="nav-link js-scroll-trigger" data-menuanchor="section4" href="#section4">Map</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" data-menuanchor="section6" href="#section6">Does Social Mobility Still Exist?</a>
+                        <a class="nav-link js-scroll-trigger" data-menuanchor="section5" href="#section5">Does Social Mobility Still Exist?</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" data-menuanchor="section7" href="#section7">About Us</a>
+                        <a class="nav-link js-scroll-trigger" data-menuanchor="section6" href="#section6">About Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" data-menuanchor="section8" href="#section8">About the Data</a>
+                        <a class="nav-link js-scroll-trigger" data-menuanchor="section7" href="#section7">About the Data</a>
                     </li>
+<!--                    <li class="nav-item">-->
+<!--                        <a class="nav-link js-scroll-trigger" data-menuanchor="section8" href="#section8">About the Data</a>-->
+<!--                    </li>-->
                 </ul>
             </div>
         </div>
@@ -49,7 +52,9 @@
         <!-- Page 1 -->
         <div class="section" id="introduction">
             <h1 class="title"> Social Mobility in America. <br></h1>
-            <h1 class="subtitle">Where Do You Stack Up? Let's Calculate Your Chances.</h1>
+            <h2 class="subtitle margin">With the wealth gap increasing and the class divide widening, we set out to find out
+                whether social mobility still exists in today's America.</h2>
+            <h1 class="subtitle margin">Where Do You Stack Up? <br> Scroll Down To Calculate Your Chances of Social Mobility.</h1>
 
 
         </div>
@@ -57,11 +62,11 @@
         <div class="section">
 
             <h2 class="page-title">The Current Status of the American Population</h2>
-            <p style="border-style: solid;"><br><br><br>Move the color nodes around!<br><br><br> </p>
+            <p style="border-style: solid;">Move the color nodes around! </p>
             <div id="pipeline"></div>
-            <p style="border-style: solid;"><br><br><br>The visualization above is a sankey diagram that depicts the income percentiles of different races in America. The
+            <p style="border-style: solid;">The visualization above is a sankey diagram that depicts the income percentiles of different races in America. The
                 width of the connections represents a flow rate, and is a proportion of the entire population. The origination nodes represent the races, while the destination
-                nodes represent the income percentile buckets. <br><br><br> </p>
+                nodes represent the income percentile buckets. </p>
 
         </div>
         <!-- Page 3 -->
@@ -75,15 +80,52 @@
             </iframe>
         </div>
         <!-- Page 4 -->
+<!--        <div class="section">-->
+<!--            <h1 class="page-title">What Are Your Chances For Social Mobility?</h1>-->
+<!--            <h2>Input a few of your demographics to explore the factors that affect your social mobility.</h2>-->
+
+<!--            <form autocomplete="off" action="/action_page.php">-->
+<!--                <div class="form-group">-->
+<!--                    <label for="Input1">Hi, my name is </label>-->
+<!--                    <input type="name" class="form-control" id="Input1" placeholder="Name">-->
+<!--                </div>-->
+<!--                <div class="autocomplete" style="width:300px;">-->
+<!--                    <label for="Input4">My gender identity is best described as </label>-->
+<!--                    <input id="Input4" type="text" name="myGender" placeholder="Gender">-->
+<!--                </div>-->
+
+<!--                <div class="autocomplete" style="width:300px;">-->
+<!--                    <label for="Input2">I grew up in </label>-->
+<!--                    <input id="Input2" type="text" name="myHometown" placeholder="Hometown">-->
+<!--                </div>-->
+<!--                <div class="autocomplete" style="width:300px;">-->
+<!--                    <label for="Input3">My parent's income is </label>-->
+<!--                    <input id="Input3" type="text" name="myIncome" placeholder="Income">-->
+<!--                </div>-->
+<!--                <div class="autocomplete" style="width:300px;">-->
+<!--                    <label for="myInput">My race is best described as </label>-->
+<!--                    <input id="myInput" type="text" name="myRace" placeholder="Race">-->
+<!--                </div><br><br>-->
+<!--                <button type="submit" class="btn btn-primary" onclick="updateVisualization()">Submit</button>-->
+
+<!--            </form>-->
+
+<!--        </div>-->
+        <!-- Page 5 -->
         <div class="section">
             <h1 class="page-title">What Are Your Chances For Social Mobility?</h1>
             <h2>Input a few of your demographics to explore the factors that affect your social mobility.</h2>
 
             <form autocomplete="off" action="/action_page.php">
-                <div class="form-group">
-                    <label for="Input1">Hi, my name is </label>
-                    <input type="name" class="form-control" id="Input1" placeholder="Name">
-                </div>
+<!--                <div class="form-group">-->
+<!--                    <label for="sel1">Select list:</label>-->
+<!--                    <select class="form-control" id="sel1">-->
+<!--                        <option>1</option>-->
+<!--                        <option>2</option>-->
+<!--                        <option>3</option>-->
+<!--                        <option>4</option>-->
+<!--                    </select>-->
+<!--                </div>-->
                 <div class="autocomplete" style="width:300px;">
                     <label for="Input4">My gender identity is best described as </label>
                     <input id="Input4" type="text" name="myGender" placeholder="Gender">
@@ -104,12 +146,8 @@
                 <button type="submit" class="btn btn-primary" onclick="updateVisualization()">Submit</button>
 
             </form>
-
-        </div>
-        <!-- Page 5 -->
-        <div class="section">
-            <h1 class="page-title">How does Gender, Race and Parental Income affect an Individual's Income Percentile?</h1>
-            <br><br><br>
+<!--            <h1 class="page-title">How does Gender, Race and Parental Income affect an Individual's Income Percentile?</h1>-->
+<!--            <br><br><br>-->
 
             <div class="row">
                 <div class="col-sm">
@@ -120,7 +158,7 @@
                 </div>
                 <div class="col-sm">
 
-                    <p style="border-style: solid;"> <br><br><br><br><br><br><br><br><br>Placeholder for summary about this data<br><br><br><br><br><br><br><br><br></p>
+                    <p style="border-style: solid;"> Placeholder for summary about this data</p>
                 </div>
             </div>
 
@@ -164,11 +202,11 @@
             <br><br><br><br>
             <p style="border-style: solid;"> <br><br><br><br><br><br><br><br><br>Placeholder for summary about this<br><br><br><br><br><br><br><br><br></p>
         </div>
-            <div id="gmap" style="width: 320px; height: 480px;"></div>
-            <div>
-                <input id="address" type="textbox" value="Sydney, NSW">
-                <input type="button" value="Encode" onclick="codeAddress()">
-            </div>        </div>
+<!--            <div id="gmap" style="width: 320px; height: 480px;"></div>-->
+<!--            <div>-->
+<!--                <input id="address" type="textbox" value="Sydney, NSW">-->
+<!--                <input type="button" value="Encode" onclick="codeAddress()">-->
+<!--            </div>        </div>-->
         <!-- Page 8 -->
         <div class="section">
             <h1>About Us</h1>
