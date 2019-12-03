@@ -4,7 +4,7 @@ var page_margin = {top: 10, right: 10, bottom: 10, left: 10},
 
 // append the svg object to the body of the page
 var sankeysvg = d3.select("#pipeline").append("svg")
-    .attr("height", height + page_margin.top + page_margin.bottom + 400)
+    .attr("height", height + page_margin.top + page_margin.bottom + 100)
     .attr("width", width + page_margin.left + page_margin.right + 200 )
     .append("g")
     .attr("transform",
