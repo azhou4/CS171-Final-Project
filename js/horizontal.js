@@ -1,6 +1,6 @@
 var margin = {top: 20, right: 20, bottom: 30, left: 40},
-    barwidth = 800 - margin.left - margin.right
-    barheight = 600 - margin.top - margin.bottom;
+    barwidth = 700 - margin.left - margin.right
+    barheight = 500 - margin.top - margin.bottom;
 
 var hbar = d3.select("#horizontal-bar")
     .append("svg")
