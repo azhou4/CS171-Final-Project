@@ -57,6 +57,21 @@ h2 {
 	font-family:"GothamLight";
 }
 
+ul {
+	margin-left: 100px;
+	margin-right:100px;
+	text-align: left;
+}
+
+li {
+	font-size: 20px;
+}
+
+ol {
+	text-align: center;
+	list-style-position: inside;
+}
+
 .form-group {
 	margin-left: 40px;
 	margin-right: 40px;
