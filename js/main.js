@@ -8,7 +8,7 @@ const updateVis = () => map.updateVis();
 
 var myLayout = new fullpage('#fullpage', {
     //options here
-    anchors:['home', 'section1', 'section2', 'section3', 'section4', 'section5', 'section6'],
+    anchors:['home', 'section1', 'section2', 'section3', 'section4', 'section5', 'section6', 'section7', 'section8', 'section9', 'section10'],
     menu: "#mainNav",
     navigation: true,
     navigationPosition: 'right',
