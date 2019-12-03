@@ -5,7 +5,7 @@ var margin = {top: 20, right: 20, bottom: 30, left: 40},
 var hbar = d3.select("#horizontal-bar")
     .append("svg")
     .attr("width", barwidth + margin.left + margin.right)
-    .attr("height", barheight + margin.top + margin.bottom)
+    .attr("height", barheight)
     .append("g")
     .attr("transform",
         "translate(" + (margin.left + 70) + "," + (margin.top) + ")");
@@ -19,7 +19,7 @@ var hbary = d3.scaleBand()
 
 hbar.append("text")
     .attr("x", 140)
-    .attr("y", 520)
+    .attr("y", 420)
     .text("Intergenerational Earning Elasticity");
 
 hbar.append("text")
