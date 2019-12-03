@@ -42,7 +42,11 @@ var hdata;
 
 loadData();
 
-console.log("HELP")
+// Define the div for the tooltip
+var div = d3.select("body").append("div")
+    .attr("class", "tooltip")
+    .style("opacity", 0);
+
 function loadData() {
     d3.csv("data/internationalmobility.csv", function(error, data) {
         console.log("horizontal", data);
@@ -83,11 +87,17 @@ function updateHVis() {
         .attr("class", "hbar")
 
 
-    hbaradd.on("mouseover", function() {
-            console.log("AJHHHHH")
+    hbaradd.on("mouseover", function(d) {
             d3.select(this).transition()
                 .duration('50')
                 .style("fill", "#4997B3");
+
+            div.transition()
+                .duration(1000)
+                .style("opacity", .9);
+            div.html(d.country + "<br/>"  + "Earning Elasticity: " + d.earning)
+                .style("left", (d3.event.pageX) + "px")
+                .style("top", (d3.event.pageY - 28) + "px");
         })
         .on("mouseout", function(d, i) {
             d3.select(this).transition().duration('50').style("fill", function(d) {
@@ -97,6 +107,9 @@ function updateHVis() {
                 else {
                     return "#9CE5FF"
                 }});
+            div.transition()
+                .duration(200)
+                .style("opacity", 0);
 
         });
 
