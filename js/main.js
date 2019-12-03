@@ -16,8 +16,15 @@ var myLayout = new fullpage('#fullpage', {
     navigationTooltips: [],
     licenseKey: 'OPEN-SOURCE-GPLV3-LICENSE',
     normalScrollElements: '.dropdown-container, .dropdown-container2',
-    autoScrolling:true,
-    scrollHorizontally: true
+    autoScrolling:false,
+    scrollHorizontally: true,
+    fitToSection: true,
+    fitToSectionDelay: 1000,
+    paddingTop: '3em',
+    paddingBottom: '10px',
+    responsiveWidth: 0,
+    responsiveHeight: 0,
+    responsiveSlides: false,
 });
 
 //methods
