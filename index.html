@@ -85,7 +85,17 @@
                         increasing and becoming more permanent, sharply reducing social mobility. </p>
                 </div>
                 <div class="col-sm">
-                    <p> (Gatsby Horizontal Bar Chart here showing USA has low mobility)</p>
+                    <h1 style="margin-right: 50px">The United States's Social Mobility Compared to Other Countries</h1>
+                    <p>The higher the intergenerational earning elasticity, the lower the chance of social mobility.</p>
+                    <div class="form-group">
+                        <select style = "width: 250px" class="form-control" id="selection" onchange="updateHVis()">
+                            <option>Alphabetical</option>
+                            <option>Highest to Lowest</option>
+                            <option>Lowest to Highest</option>
+                        </select>
+                    </div>
+                    <div id="horizontal-bar"></div>
+                    <p>The United States has an intergenerational earning elasticity of 0.47, the 5th lowest out of these 17 countries.</p>
                 </div>
             </div>
         </div>
@@ -105,7 +115,7 @@
                     <p> <i>The American Dream Report</i>, a study of the Economic Mobility Project, found that Americans
                         surveyed were more likely than citizens of other countries to agree with statements like:</p>
                     <ul>
-                        <li>"People get rewarded for intelligence and skill</li>
+                        <li>"People get rewarded for intelligence and skill"</li>
                         <li>"People get rewarded for their efforts"</li>
                     </ul>
                     <p>and less likely to agree with statements like:</p>
@@ -290,10 +300,23 @@
         <!-- Page 9 -->
         <div class="section">
             <h1>About Us</h1>
-            <p style="border-style: solid;"> <br><br><br>Placeholders for images of the 3 of us! <br><br><br></p><br>
+            <div class="row">
+                <div class="col-sm">
+                    <img src="img/amy-circle.png" style="width:80%">
+                    <br><br>
+                    <p><b>Amy Zhou</b></p>
+                </div>
+                <div class="col-sm">
+
+                </div>
+                <div class="col-sm">
+
+                </div>
+            </div>
+            <br><br>
             <p>We're Amy, Emma, and Kevin, a group of Harvard undergraduates in CS171. Curious about how factors of our upbringing
-            can impact later "success" and income, we used this project opportunity to dive deep in learning about whether
-            the American Dream of social mobility still exists. </p>
+            can impact later "success" and income, we used this project as an opportunity to dive deep into learning about whether
+            the social mobility and the American Dream still exists. </p>
         </div>
         <!-- Page 10 -->
         <div class="section">
@@ -328,5 +351,6 @@
     <script src="js/pcp.js"></script>
     <script src="js/barchart.js"></script>
     <script src="js/pipeline.js"></script>
+    <script src="js/horizontal.js"></script>
 </body>
 </html>

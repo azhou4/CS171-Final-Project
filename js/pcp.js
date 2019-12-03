@@ -84,6 +84,7 @@ d3.csv("data/cars.csv", function(data) {
 
 
     // The path function take a row of the csv as input, and return x and y coordinates of the line to draw for this raw.
+
     const path = d => d3.line()(dimensions.map(p =>
             p === "Gender" || p === "Race" ? [x(p), y[p](d[p]) + y[p].bandwidth() / 2] : [x(p), y[p](d[p])]));
     // Draw the lines
@@ -119,14 +120,14 @@ d3.csv("data/cars.csv", function(data) {
         .attr("transform", function(d) { return "translate(" + x(d) + ")"; })
         // And I build the axis with the call function
         .each(function(d) {
-            console.log("dddd", d);
+            //console.log("dddd", d)
             d3.select(this).call(d3.axisLeft().scale(y[d])); })
         // Add axis title
         .append("text")
         .style("text-anchor", "middle")
         .attr("y", -9)
         .text(function(d) {
-            console.log("text", d);
+            //console.log("text", d)
             return d; })
         .style("fill", "black")
 });
