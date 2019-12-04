@@ -32,7 +32,6 @@ class PcpVis {
             .range([0, this.width])
             .padding(1)
             .domain(Object.keys(this.y));
-        // this.initVis();
     }
 
     updateVis(county) {
@@ -43,7 +42,6 @@ class PcpVis {
                 [vis.x(p), vis.y[p](d[p]) + vis.y[p].bandwidth() / 2] :
                 [vis.x(p), vis.y[p](d[p])]));
         let avePercentiles = [];
-        // console.log(countyCode, vis.data["kir_asian_female_p1"][countyCode]);
         for (const race of races) {
             console.log(race);
             for (const gender of genders) {
