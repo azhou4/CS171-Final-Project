@@ -89,30 +89,32 @@ class MapVis {
             .attr("class", "tract")
             .attr("d", vis.path)
             .attr("fill", d => {
-                if (point && d3.geoContains(d, point)) {
-                    // Call the PCP diagram with this county's data
-                    return "black";
-                } else if (vis.data["kir_top20_" + race + "_" + gender + "_p100"][d.id]) {
+                // if (point && d3.geoContains(d, point)) {
+                //     // Call the PCP diagram with this county's data
+                //     return "black";
+                // } else
+                    if (vis.data["kir_top20_" + race + "_" + gender + "_p100"][d.id]) {
                     return vis.colorScale(vis.data["kir_top20_" + race + "_" + gender + "_p100"][d.id]);
                 } else {
                     return "gray";
                 }
             })
-            .attr("stroke", "white")
+            .attr("stroke",  "white")
+            .attr("stroke-width", d => point && d3.geoContains(d, point) ? 2 : .25)
             .on("mouseover", tool_tip.show)
             .on("mouseout", tool_tip.hide);
         loading.hide();
         // helpful link for markers https://stackoverflow.com/questions/21397608/put-markers-to-a-map-generated-with-topojson-and-d3-js
-        const marks = [{long: -75, lat: 43},{long: -78, lat: 41},{long: -70, lat: 53}];
-        vis.svg.selectAll(".mark")
-            .data(marks)
-            .enter()
-            .append("image")
-            .attr('class','mark')
-            .attr('width', 20)
-            .attr('height', 20)
-            .attr("xlink:href",'https://cdn3.iconfinder.com/data/icons/softwaredemo/PNG/24x24/DrawingPin1_Blue.png')
-            .attr("transform", d => `translate(${vis.projection([d.long,d.lat])})`);
+        // const marks = [{long: -75, lat: 43},{long: -78, lat: 41},{long: -70, lat: 53}];
+        // vis.svg.selectAll(".mark")
+        //     .data([point])
+        //     .enter()
+        //     .append("image")
+        //     .attr('class','mark')
+        //     .attr('width', 20)
+        //     .attr('height', 20)
+        //     .attr("xlink:href",'https://cdn3.iconfinder.com/data/icons/softwaredemo/PNG/24x24/DrawingPin1_Blue.png')
+        //     .attr("transform", d => `translate(${vis.projection([d.long,d.lat])})`);
     }
 
     createLegend() {
