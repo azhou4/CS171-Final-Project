@@ -73,8 +73,8 @@ ol {
 }
 
 .form-group {
-	margin-left: 40px;
-	margin-right: 40px;
+	display: inline-block;
+	padding-right: 4px;
 	text-align: center;
 	font-family: "RobotoLight";
 	font-size: 24px;
