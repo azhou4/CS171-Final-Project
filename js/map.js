@@ -54,11 +54,11 @@ class MapVis {
             vis.us = us;
             vis.map = vis.svg.append("g")
                 .selectAll("path");
-            vis.updateVis();
+            vis.updateVis(null);
         });
     }
 
-    updateVis() {
+    updateVis(point) {
         const loading = $("#loading");
         loading.show();
         const vis = this;
@@ -89,7 +89,10 @@ class MapVis {
             .attr("class", "tract")
             .attr("d", vis.path)
             .attr("fill", d => {
-                if (vis.data["kir_top20_" + race + "_" + gender + "_p100"][d.id]) {
+                if (point && d3.geoContains(d, point)) {
+                    // Call the PCP diagram with this county's data
+                    return "black";
+                } else if (vis.data["kir_top20_" + race + "_" + gender + "_p100"][d.id]) {
                     return vis.colorScale(vis.data["kir_top20_" + race + "_" + gender + "_p100"][d.id]);
                 } else {
                     return "gray";

@@ -15,7 +15,8 @@ function getLatLong() {
     geocoder.geocode( { 'address': address}, function(results, status) {
         if (status == 'OK') {
             // gmap.setCenter(results[0].geometry.location);
-            console.log(results[0].geometry.location);
+            console.log("selected location: ", [results[0].geometry.location.lng(), results[0].geometry.location.lat()]);
+            updateVis([results[0].geometry.location.lng(), results[0].geometry.location.lat()]);
             // var marker = new google.maps.Marker({
             //     map: gmap,
             //     position: results[0].geometry.location

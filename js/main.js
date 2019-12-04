@@ -4,7 +4,7 @@ d3.json("data/kir_top20_county.json", data => {
     map = new MapVis(data);
 });
 
-const updateVis = () => map.updateVis();
+const updateVis = point => map.updateVis(point);
 
 var myLayout = new fullpage('#fullpage', {
     //options here
