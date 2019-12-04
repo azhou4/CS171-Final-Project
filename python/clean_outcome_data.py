@@ -27,5 +27,6 @@ for i in range(df.shape[0]):
 df = df.drop(['state', 'county'], axis=1)
 df = df.set_index('code')
 df = df.loc[~df.index.duplicated(keep='first')]
+df = df.clip(0,1)
 # df.apply(lambda x: [x.dropna()], axis=0).to_json("data/kir_county3.json", orient="columns")
 df.to_json("data/kir_county.json")

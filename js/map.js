@@ -22,7 +22,6 @@ class MapVis {
             // .parallels([40, 45])
             .translate([this.width/2, this.height/2])
             .scale(1000);
-        // this.projection = null;
         this.path = d3.geoPath()
             .projection(this.projection);
         const lowColor = "#B37029";
@@ -75,7 +74,7 @@ class MapVis {
                 let html = "<div class=''><h4>" + d.properties.name + " County</h4><table>";
                 for (let raceCode of ['asian', 'black', 'hisp', 'natam', 'white']) {
                     html += "<tr><td>" + translateRaceCode(raceCode) + "</td><td>";
-                    if (vis.data["kir_top20_" + raceCode + "_" + gender + "_p100"][d.id]) {
+                    if (vis.data["kir_top20_" + raceCode + "_" + gender + "_p100"][d.id] !== null) {
                         html += Math.floor(100 * vis.data["kir_top20_" + raceCode + "_" + gender + "_p100"][d.id]) + "%</td></tr>"
                     } else {
                         html += "NA</td></tr>";
@@ -104,17 +103,6 @@ class MapVis {
             .on("mouseover", tool_tip.show)
             .on("mouseout", tool_tip.hide);
         loading.hide();
-        // helpful link for markers https://stackoverflow.com/questions/21397608/put-markers-to-a-map-generated-with-topojson-and-d3-js
-        // const marks = [{long: -75, lat: 43},{long: -78, lat: 41},{long: -70, lat: 53}];
-        // vis.svg.selectAll(".mark")
-        //     .data([point])
-        //     .enter()
-        //     .append("image")
-        //     .attr('class','mark')
-        //     .attr('width', 20)
-        //     .attr('height', 20)
-        //     .attr("xlink:href",'https://cdn3.iconfinder.com/data/icons/softwaredemo/PNG/24x24/DrawingPin1_Blue.png')
-        //     .attr("transform", d => `translate(${vis.projection([d.long,d.lat])})`);
     }
 
     createLegend() {
