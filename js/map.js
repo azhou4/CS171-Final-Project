@@ -67,6 +67,7 @@ class MapVis {
             .attr("stroke", "white");
         const race = $("select#race").val();
         const gender = $("select#gender").val();
+        const pctile = $("select#parent-percentile").val();
         const tool_tip = d3.tip()
             .attr("class", "d3-tip")
             .offset([0, 0])
@@ -74,8 +75,8 @@ class MapVis {
                 let html = "<div class=''><h4>" + d.properties.name + " County</h4><table>";
                 for (let raceCode of ['asian', 'black', 'hisp', 'natam', 'white']) {
                     html += "<tr><td>" + translateRaceCode(raceCode) + "</td><td>";
-                    if (vis.data["kir_top20_" + raceCode + "_" + gender + "_p100"][d.id] !== null) {
-                        html += Math.floor(100 * vis.data["kir_top20_" + raceCode + "_" + gender + "_p100"][d.id]) + "%</td></tr>"
+                    if (vis.data["kir_top20_" + raceCode + "_" + gender + "_" + pctile][d.id] !== null) {
+                        html += Math.floor(100 * vis.data["kir_top20_" + raceCode + "_" + gender + "_" + pctile][d.id]) + "%</td></tr>"
                     } else {
                         html += "NA</td></tr>";
                     }
@@ -92,8 +93,8 @@ class MapVis {
                 //     // Call the PCP diagram with this county's data
                 //     return "black";
                 // } else
-                    if (vis.data["kir_top20_" + race + "_" + gender + "_p100"][d.id]) {
-                    return vis.colorScale(vis.data["kir_top20_" + race + "_" + gender + "_p100"][d.id]);
+                    if (vis.data["kir_top20_" + race + "_" + gender + "_" + pctile][d.id]) {
+                    return vis.colorScale(vis.data["kir_top20_" + race + "_" + gender + "_" + pctile][d.id]);
                 } else {
                     return "gray";
                 }

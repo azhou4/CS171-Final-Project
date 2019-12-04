@@ -147,6 +147,17 @@
                     <option value="male">Male</option>
                 </select>
             </div>
+            <div class="form-group">
+                <label for="parent-percentile">Parent income percentile</label>
+                <select class="form-control" id="parent-percentile" onchange="updateVis()">
+                    <option value="p100">Top 1% (100th percentile)</option>
+                    <option value="p75">75th percentile</option>
+                    <option value="p50">50th percentile</option>
+                    <option value="p25">25th percentile</option>
+                    <option value="p1">Bottom 1% (1st percentile)</option>
+
+                </select>
+            </div>
             <div id="loading">Loading...</div>
         </div>
                 <div id="map-container"></div>
