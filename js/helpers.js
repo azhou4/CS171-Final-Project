@@ -9,3 +9,7 @@ function translateRaceCode(raceCode) {
             return raceCode[0].toUpperCase() + raceCode.slice(1,);
     }
 }
+
+function translateGenderCode(genderCode) {
+    return genderCode[0].toUpperCase() + genderCode.slice(1,);
+}

@@ -1,8 +1,16 @@
+const races = ['white', 'black', 'hisp', 'asian', 'natam', 'other'];
+const genders = ['male', 'female'];
+const pctiles = ['p1', 'p25', 'p50', 'p75', 'p100'];
 
 let map;
-d3.json("data/kir_top20_county.json", data => {
-    map = new MapVis(data);
-});
+let pcp;
+queue()
+    .defer(d3.json, "data/kir_top20_county.json")
+    .defer(d3.json, "data/kir_county.json")
+    .await(function(error, top20KirData, aveKirData){
+        map = new MapVis(top20KirData);
+        pcp = new PcpVis(aveKirData);
+    });
 
 const updateVis = point => map.updateVis(point);
 

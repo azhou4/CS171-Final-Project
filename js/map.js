@@ -14,12 +14,7 @@ class MapVis {
             }))
             .append("g");
         this.svg = svg;
-        this.lat = 36;
-        this.lon = 120;
-        this.projection = d3.geoAlbers()
-            // .center([0, this.lat])
-            // .rotate([this.lon, 0])
-            // .parallels([40, 45])
+        this.projection = d3.geoAlbersUsa()
             .translate([this.width/2, this.height/2])
             .scale(1000);
         this.path = d3.geoPath()
@@ -89,18 +84,23 @@ class MapVis {
             .attr("class", "tract")
             .attr("d", vis.path)
             .attr("fill", d => {
-                // if (point && d3.geoContains(d, point)) {
-                //     // Call the PCP diagram with this county's data
-                //     return "black";
-                // } else
-                    if (vis.data["kir_top20_" + race + "_" + gender + "_" + pctile][d.id]) {
+                if (vis.data["kir_top20_" + race + "_" + gender + "_" + pctile][d.id]) {
                     return vis.colorScale(vis.data["kir_top20_" + race + "_" + gender + "_" + pctile][d.id]);
                 } else {
                     return "gray";
                 }
             })
             .attr("stroke",  "white")
-            .attr("stroke-width", d => point && d3.geoContains(d, point) ? 2 : .25)
+            .attr("stroke-width", d => {
+                if (point && d3.geoContains(d, point)) {
+                    if (pcp) {
+                        pcp.updateVis({countyName: d.properties.name, countyCode: d.id});
+                    }
+                    return 2;
+                } else {
+                    return .25;
+                }
+            })
             .on("mouseover", tool_tip.show)
             .on("mouseout", tool_tip.hide);
         loading.hide();
