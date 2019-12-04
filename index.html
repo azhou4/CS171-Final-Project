@@ -174,26 +174,20 @@
         <!-- Page 6 -->
         <div class="section">
             <h1 class="page-title">What Are Your Chances For Social Mobility?</h1>
-            <h2>Input a few of your demographics to explore the factors that affect your social mobility.</h2>
+            <h2>Input a few of your demographics to explore the factors that affect your social mobility. You must input your hometown to see the PCP chart.</h2>
+             <div class="form-group">
+                    <label for="Input1">Hi, my name is </label>
+                    <input type="name" class="form-control" id="Input1" placeholder="Name">
+                </div>
 
-            <form autocomplete="off" action="/action_page.php">
-<!--                <div class="form-group">-->
-<!--                    <label for="sel1">Select list:</label>-->
-<!--                    <select class="form-control" id="sel1">-->
-<!--                        <option>1</option>-->
-<!--                        <option>2</option>-->
-<!--                        <option>3</option>-->
-<!--                        <option>4</option>-->
-<!--                    </select>-->
-<!--                </div>-->
                 <div class="autocomplete" style="width:300px;">
                     <label for="Input4">My gender identity is best described as </label>
                     <input id="Input4" type="text" name="myGender" placeholder="Gender">
                 </div>
 
                 <div class="autocomplete" style="width:300px;">
-                    <label for="Input2">I grew up in </label>
-                    <input id="Input2" type="text" name="myHometown" placeholder="Hometown">
+                    <label for="hometown">I grew up in </label>
+                    <input id="hometown" type="text" name="myHometown" placeholder="Hometown">
                 </div>
                 <div class="autocomplete" style="width:300px;">
                     <label for="Input3">My parent's income is </label>
@@ -203,12 +197,12 @@
                     <label for="myInput">My race is best described as </label>
                     <input id="myInput" type="text" name="myRace" placeholder="Race">
                 </div><br><br>
-                <button type="submit" class="btn btn-primary" onclick="updateVisualization()">Submit</button>
-
-            </form>
-<!--            <h1 class="page-title">How does Gender, Race and Parental Income affect an Individual's Income Percentile?</h1>-->
-<!--            <br><br><br>-->
-
+                <button type="submit" class="btn btn-primary" onclick="getLatLong()">Submit</button>
+        </div>
+        <!-- Page 5 -->
+        <div class="section">
+            <h1 class="page-title">How does Gender, Race and Parental Income affect an Individual's Income Percentile?</h1>
+            <br><br><br>
             <div class="row">
                 <div class="col-sm">
                     <div id="pcp-chart"></div>
@@ -256,6 +250,17 @@
                     <option value="male">Male</option>
                 </select>
             </div>
+            <div class="form-group">
+                <label for="parent-percentile">Parent income percentile</label>
+                <select class="form-control" id="parent-percentile" onchange="updateVis()">
+                    <option value="p100">Top 1% (100th percentile)</option>
+                    <option value="p75">75th percentile</option>
+                    <option value="p50">50th percentile</option>
+                    <option value="p25">25th percentile</option>
+                    <option value="p1">Bottom 1% (1st percentile)</option>
+
+                </select>
+            </div>
             <div id="loading">Loading...</div>
         </div>
                 <div id="map-container"></div>
@@ -268,12 +273,6 @@
             <br><br><br><br>
             <p style="border-style: solid;"> <br><br><br><br><br><br><br><br><br>Placeholder for summary about this<br><br><br><br><br><br><br><br><br></p>
         </div>
-<!--            <div id="gmap" style="width: 320px; height: 480px;"></div>-->
-<!--            <div>-->
-<!--                <input id="address" type="textbox" value="Sydney, NSW">-->
-<!--                <input type="button" value="Encode" onclick="codeAddress()">-->
-<!--            </div>        </div>-->
-
         <!-- Page 8 -->
         <div class="section">
             <h1 class="page-title">Moving Forward</h1>
@@ -337,6 +336,7 @@
     <script src="js/fullpage.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/d3.min.js"></script>
+    <script src="js/queue.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/LIB/sankey.js"></script>
     <script src="js/geocode.js"></script>
     <script type='text/javascript' src='config.js'></script>

@@ -1,4 +1,4 @@
-name,Gender,Race,Parental Income %,% Rank (Income)
+name,Gender,Race,Parent Income Percentile,Predicted Income Percentile
 AMC Ambassador Brougham,Male,Native,360,175
 AMC Ambassador DPL,Male,Native,390,190
 AMC Ambassador SST,Male,Native,304,150
