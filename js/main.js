@@ -16,7 +16,7 @@ const updateVis = point => map.updateVis(point);
 
 var myLayout = new fullpage('#fullpage', {
     //options here
-    anchors:['home', 'section1', 'section2', 'section3', 'section4', 'section5', 'section6'],
+    anchors:['home', 'section1', 'section2', 'section3', 'section4', 'section5', 'section6', 'section7', 'section8', 'section9', 'section10'],
     menu: "#mainNav",
     navigation: true,
     navigationPosition: 'right',
@@ -24,8 +24,15 @@ var myLayout = new fullpage('#fullpage', {
     navigationTooltips: [],
     licenseKey: 'OPEN-SOURCE-GPLV3-LICENSE',
     normalScrollElements: '.dropdown-container, .dropdown-container2',
-    autoScrolling:true,
-    scrollHorizontally: true
+    autoScrolling:false,
+    scrollHorizontally: true,
+    fitToSection: true,
+    fitToSectionDelay: 1000,
+    paddingTop: '3em',
+    paddingBottom: '10px',
+    responsiveWidth: 0,
+    responsiveHeight: 0,
+    responsiveSlides: false,
 });
 
 //methods

@@ -20,26 +20,41 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" data-menuanchor="section1" href="#section1">Social Mobility in America</a>
+                        <a class="nav-link js-scroll-trigger" data-menuanchor="section1" href="#section1">What is Social Mobility?</a>
+                    </li>
+<!--                    <li class="nav-item">-->
+<!--                        <a class="nav-link js-scroll-trigger" data-menuanchor="section2" href="#section2">Land of Opportunity</a>-->
+<!--                    </li>-->
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" data-menuanchor="section3" href="#section3">Social Mobility in America</a>
+                    </li>
+<!--                    <li class="nav-item">-->
+<!--                        <a class="nav-link js-scroll-trigger" data-menuanchor="section4" href="#section4">The Current Status</a>-->
+<!--                    </li>-->
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" data-menuanchor="section5" href="#section5">The Survey</a>
+                    </li>
+<!--                    <li class="nav-item">-->
+<!--                        <a class="nav-link js-scroll-trigger" data-menuanchor="section6" href="#section6">Influence of Hometown</a>-->
+<!--                    </li>-->
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" data-menuanchor="section7" href="#section7">Map</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" data-menuanchor="section2" href="#section2">The Current Status</a>
+                        <a class="nav-link js-scroll-trigger" data-menuanchor="section8" href="#section8">Does Social Mobility Still Exist?</a>
                     </li>
+<!--                    <li class="nav-item">-->
+<!--                        <a class="nav-link js-scroll-trigger" data-menuanchor="section9" href="#section9">Moving Forward</a>-->
+<!--                    </li>-->
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" data-menuanchor="section3" href="#section3">The Survey</a>
+                        <a class="nav-link js-scroll-trigger" data-menuanchor="section10" href="#section10">About Us</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" data-menuanchor="section5" href="#section5">Map</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" data-menuanchor="section6" href="#section6">Does Social Mobility Still Exist?</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" data-menuanchor="section7" href="#section7">About Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" data-menuanchor="section8" href="#section8">About the Data</a>
-                    </li>
+<!--                    <li class="nav-item">-->
+<!--                        <a class="nav-link js-scroll-trigger" data-menuanchor="section9" href="#section9">About the Data</a>-->
+<!--                    </li>-->
+<!--                    <li class="nav-item">-->
+<!--                        <a class="nav-link js-scroll-trigger" data-menuanchor="section8" href="#section8">About the Data</a>-->
+<!--                    </li>-->
                 </ul>
             </div>
         </div>
@@ -49,32 +64,112 @@
         <!-- Page 1 -->
         <div class="section" id="introduction">
             <h1 class="title"> Social Mobility in America. <br></h1>
-            <h1 class="subtitle">Where Do You Stack Up? Let's Calculate Your Chances.</h1>
+            <h2 class="subtitle margin">With the wealth gap increasing and the class divide widening, we set out to find out
+                whether social mobility still exists in today's America.</h2>
+            <h1 class="subtitle margin">Where Do You Stack Up? <br> Scroll Down To Calculate Your Chances of Social Mobility.</h1>
 
 
         </div>
         <!-- Page 2 -->
         <div class="section">
-
-            <h2 class="page-title">The Current Status of the American Population</h2>
-            <p style="border-style: solid;"><br><br><br>Move the color nodes around!<br><br><br> </p>
-            <div id="pipeline"></div>
-            <p style="border-style: solid;"><br><br><br>The visualization above is a sankey diagram that depicts the income percentiles of different races in America. The
-                width of the connections represents a flow rate, and is a proportion of the entire population. The origination nodes represent the races, while the destination
-                nodes represent the income percentile buckets. <br><br><br> </p>
-
+            <div class="row">
+                <div class="col-sm">
+                    <h1 class="page-title">What is Social Mobility?</h1>
+                    <br><br>
+                    <p style="font-size:20px"><b>Social Mobility</b> can be defined as the upward or downward movement of Americans from one
+                        social class or economic level to another, through job changes, inheritance, marriage,
+                        connections, tax changes, innovation, illegal activities, hard work, lobbying, luck, health
+                        changes or other factors
+                    </p>
+                    <p style="font-size:20px"> In recent years, several studies have found that intergenerational mobility is lower in the US
+                        than in some European countries. A 2013 Brooking Institution study found income inequality was
+                        increasing and becoming more permanent, sharply reducing social mobility. </p>
+                </div>
+                <div class="col-sm">
+                    <h1 style="margin-right: 50px">The United States's Social Mobility Compared to Other Countries</h1>
+                    <p style="font-size: 20px">The higher the intergenerational earning elasticity, the lower the chance of social mobility.</p>
+                    <div class="form-group">
+                        <select style = "width: 250px" class="form-control" id="selection" onchange="updateHVis()">
+                            <option>Alphabetical</option>
+                            <option>Highest to Lowest</option>
+                            <option>Lowest to Highest</option>
+                        </select>
+                    </div>
+                    <div id="horizontal-bar"></div>
+                    <p style="font-size:20px">The United States has an intergenerational earning elasticity of 0.47, the 5th lowest out of these 17 countries.</p>
+                </div>
+            </div>
         </div>
+
         <!-- Page 3 -->
         <div class="section">
-            <h2>America's wealth gap is enlarging, with a large amount of wealth unequally distributed in the Top 1%. <br>Does Social Mobility
-            still exist in America?</h2>
-            <p>Watch this video from Politizane to learn more about the Wealth Inequality in America.</p>
+            <div class="row">
+                <div class="col-sm">
+                    <br><br>
+                    <img src="img/flag.jpg" style="width: 90%">
+                </div>
+                <div class="col-sm" style="text-align: left">
+                    <h1 class="page-title">The Land of Opportunity</h1>
+                    <p>Many Americans strongly believe the US to be a "land of opportunity" that offers every child an equal
+                        chance at social and economic mobility. The idea that Americans rise from humble origins to riches is
+                        part of the American Dream. </p>
+                    <p> <i>The American Dream Report</i>, a study of the Economic Mobility Project, found that Americans
+                        surveyed were more likely than citizens of other countries to agree with statements like:</p>
+                    <ul>
+                        <li>"People get rewarded for intelligence and skill"</li>
+                        <li>"People get rewarded for their efforts"</li>
+                    </ul>
+                    <p>and less likely to agree with statements like:</p>
+                    <ul>
+                        <li>"Coming from a wealthy family is 'essential' and 'very important' to getting ahead"</li>
+                        <li>"Income differences in my country are too large"</li>
+                        <li>"It is the responsibility of government to reduce differences in income"</li>
+                    </ul>
+                </div>
+            </div>
 
-            <iframe width="840" height="630"
-                    src="https://www.youtube.com/embed/QPKKQnijnsM">
-            </iframe>
+
         </div>
+
         <!-- Page 4 -->
+        <div class="section" >
+            <h2 class="page-title">The Current Status of the American Population</h2>
+            <div class="row">
+                <div class="col-sm">
+                    <p style="border-style: solid;">Move the color nodes around! </p>
+                    <div id="pipeline"></div>
+                </div>
+                <div class="col-sm">
+                    <p style="border-style: solid;">The visualization above is a sankey diagram that depicts the income percentiles of
+                        different
+                        races in America. The
+                        width of the connections represents a flow rate, and is a proportion of the entire population.
+                        The origination nodes represent the races, while the destination
+                        nodes represent the income percentile buckets. </p>
+                </div>
+            </div>
+
+        </div>
+        <!-- Page 5 -->
+        <div class="section">
+            <img src="img/opportunity.jpeg" style="width:50%">
+
+            <h2 style="margin-left: 200px; margin-right: 200px; margin-top: 100px">Many factors like hometown, gender, race, and more affect our social mobility.
+            We compiled data from the Opportunity Insights project to show how these factors will affect your income
+                percentile. In the next visualizations, we invite you to not only try out your demographics but also
+                test out different variables to witness the effects of these factors.</h2>
+
+            <!--            <h2>America's wealth gap is enlarging, with a large amount of wealth unequally distributed in the Top 1%.-->
+<!--                <br>Does Social Mobility-->
+<!--            still exist in America?</h2>-->
+<!--            <p>Watch this video from Politizane to learn more about the Wealth Inequality in America.</p>-->
+
+<!--            <iframe width="840" height="630"-->
+<!--                    src="https://www.youtube.com/embed/QPKKQnijnsM">-->
+<!--            </iframe>-->
+        </div>
+
+        <!-- Page 6 -->
         <div class="section">
             <h1 class="page-title">What Are Your Chances For Social Mobility?</h1>
             <h2>Input a few of your demographics to explore the factors that affect your social mobility. You must input your hometown to see the PCP chart.</h2>
@@ -82,6 +177,7 @@
                     <label for="Input1">Hi, my name is </label>
                     <input type="name" class="form-control" id="Input1" placeholder="Name">
                 </div>
+
                 <div class="autocomplete" style="width:300px;">
                     <label for="Input4">My gender identity is best described as </label>
                     <input id="Input4" type="text" name="myGender" placeholder="Gender">
@@ -105,7 +201,6 @@
         <div class="section">
             <h1 class="page-title">How does Gender, Race and Parental Income affect an Individual's Income Percentile?</h1>
             <br><br><br>
-
             <div class="row">
                 <div class="col-sm">
                     <div id="pcp-chart"></div>
@@ -115,12 +210,18 @@
                 </div>
                 <div class="col-sm">
 
-                    <p style="border-style: solid;"> <br><br><br><br><br><br><br><br><br>Placeholder for summary about this data<br><br><br><br><br><br><br><br><br></p>
+                    <p style="border-style: solid;"> Placeholder for summary about this data</p>
                 </div>
             </div>
 
         </div>
-        <!-- Page 6 -->
+        <!-- Page 7 -->
+        <div class="section">
+            <h2>One factor that allows us to investigate multiple factors is hometown. Hometown can account for factors
+                like racial segregation, quality of education, living quality, and more. Our data shows that the county
+                you are from has a great effect on the probability in which to reach the Top 20 income percentile. </h2>
+        </div>
+        <!-- Page 8 -->
         <div class="section container">
 
             <div class="row">
@@ -170,20 +271,56 @@
             <br><br><br><br>
             <p style="border-style: solid;"> <br><br><br><br><br><br><br><br><br>Placeholder for summary about this<br><br><br><br><br><br><br><br><br></p>
         </div>
-            <div id="gmap" style="width: 320px; height: 480px;"></div>
-            <div>
-                <input id="address" type="textbox" value="Sydney, NSW">
-                <input type="button" value="Encode" onclick="getLatLong()">
-            </div>        </div>
         <!-- Page 8 -->
         <div class="section">
-            <h1>About Us</h1>
-            <p style="border-style: solid;"> <br><br><br>Placeholders for images of the 3 of us! <br><br><br></p><br>
-            <p>We're Amy, Emma, and Kevin, a group of Harvard undergraduates in CS171. Curious about how factors of our upbringing
-            can impact later "success" and income, we used this project opportunity to dive deep in learning about whether
-            the American Dream of social mobility still exists. </p>
+            <h1 class="page-title">Moving Forward</h1>
+            <h2>Given that overall, Americans have lower social mobility, what can we do to improve this?</h2>
+            <p> In order to improve Social Mobility, the Brooking Institute promotes 6 policy ideas:</p>
+            <ol style="text-align:center">
+                <li>
+                    Target housing vouchers more effectively
+                </li>
+                <li>
+                    Build public housing in low-poverty areas, instead of high-poverty areas
+                </li>
+                <li>
+                    Reform exclusionary zoning laws
+                </li>
+                <li>
+                    Better enforcement of fair housing rules by HUD
+                </li>
+                <li>
+                    Invest in infrastructure
+                </li>
+                <li>
+                    Promote school choice
+                </li>
+            </ol>
+
         </div>
+
         <!-- Page 9 -->
+        <div class="section">
+            <h1>About Us</h1>
+            <div class="row">
+                <div class="col-sm">
+                    <img src="img/amy-circle.png" style="width:80%">
+                    <br><br>
+                    <p><b>Amy Zhou</b></p>
+                </div>
+                <div class="col-sm">
+
+                </div>
+                <div class="col-sm">
+
+                </div>
+            </div>
+            <br><br>
+            <p>We're Amy, Emma, and Kevin, a group of Harvard undergraduates in CS171. Curious about how factors of our upbringing
+            can impact later "success" and income, we used this project as an opportunity to dive deep into learning about whether
+            the social mobility and the American Dream still exists. </p>
+        </div>
+        <!-- Page 10 -->
         <div class="section">
             <h1>About the Data</h1>
             <br><br><br>
@@ -217,5 +354,6 @@
     <script src="js/pcp.js"></script>
     <script src="js/barchart.js"></script>
     <script src="js/pipeline.js"></script>
+    <script src="js/horizontal.js"></script>
 </body>
 </html>

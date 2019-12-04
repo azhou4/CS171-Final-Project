@@ -31,6 +31,11 @@ body {
 	color:white;
 }
 
+.margin {
+	margin-left: 150px;
+	margin-right: 150px;
+}
+
 .small-title {
 	font-family:"RobotoLight";
 }
@@ -50,6 +55,21 @@ h1 {
 
 h2 {
 	font-family:"GothamLight";
+}
+
+ul {
+	margin-left: 100px;
+	margin-right:100px;
+	text-align: left;
+}
+
+li {
+	font-size: 20px;
+}
+
+ol {
+	text-align: center;
+	list-style-position: inside;
 }
 
 .form-group {
@@ -173,6 +193,41 @@ input[type=submit] {
 	color: white;
 	font-size: .8em;
 }
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+	box-sizing: border-box;
+	display: inline;
+	font-size: 10px;
+	width: 100%;
+	line-height: 1;
+	color: rgba(0, 0, 0, 0.8);
+	content: "\25BC";
+	position: absolute;
+	text-align: center;
+}
+
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+	margin: -1px 0 0 0;
+	top: 100%;
+	left: 0;
+}
+
+div.tooltip {
+	position: absolute;
+	text-align: center;
+	width: 240px;
+	height: 40px;
+	padding: 2px;
+	font-size: 14px;
+	background: #111f5f;
+	border: 0px;
+	border-radius: 8px;
+	pointer-events: none;
+	color: white;
+}
+
 .state {
 	stroke-width: 10;
 }
