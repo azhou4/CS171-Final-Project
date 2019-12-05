@@ -4,7 +4,7 @@ class PcpVis {
     constructor(data) {
         this.data = data;
         const margin = {top: 30, right: 10, bottom: 10, left: 0};
-        this.width = 800 - margin.left - margin.right;
+        this.width = 900 - margin.left - margin.right;
         this.height = 400 - margin.top - margin.bottom;
         this.svg = d3.select("#pcp-chart")
             .append("svg")
@@ -32,9 +32,13 @@ class PcpVis {
             .range([0, this.width])
             .padding(1)
             .domain(Object.keys(this.y));
+
+        // Initialize with Boston
+        this.updateVis({countyName: "Suffolk", countyCode: "25025"})
     }
 
     updateVis(county) {
+        console.log("county", county)
         const vis = this;
         // The path function returns x and y coordinates of the line
         const path = d => d3.line()(Object.keys(vis.y).map(p =>
@@ -64,7 +68,12 @@ class PcpVis {
             .attr("d",  path)
             .attr("class", "pcp-line")
             .style("fill", "none")
-            .style("stroke", "#B37029")
+            .style("font-size", "14px")
+            .style("stroke",
+                function(d) {
+                console.log(d)
+                return "#B37029"
+                })
         // .style("opacity", 0.5);
         // .on("mouseover", highlight)
         // .on("mouseleave", doNotHighlight );
@@ -75,6 +84,7 @@ class PcpVis {
         // For each dimension of the dataset I add a 'g' element:
             .data(Object.keys(vis.y)).enter()
             .append("g")
+            .style("font-size", "14px")
             // I translate this element to its right position on the x axis
             .attr("transform", d => "translate(" + vis.x(d) + ")")
             // And I build the axis with the call function
