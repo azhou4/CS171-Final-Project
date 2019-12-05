@@ -53,22 +53,22 @@ function loadData() {
         if (error) throw error;
 
         hdata = data;
-        updateHVis("Alphabetical");
+        updateHVis("Highest to Lowest");
 
     })
 
 }
 
 function updateHVis() {
-    console.log("hdata", hdata);
+    //console.log("hdata", hdata);
     var val = document.getElementById("selection").value;
-    console.log("VALLL", val)
+    //console.log("VALLL", val)
     if (val == "Alphabetical") {
         hdata.sort(function(a,b) {
             var textA = a["country"]
             var textB = b["country"]
             return textB.localeCompare(textA)})
-        console.log("hdataaa", hdata)
+        //console.log("hdataaa", hdata)
     }
     else if (val == "Highest to Lowest") {
         hdata.sort(function(a,b) {return a["earning"] - b['earning']})
