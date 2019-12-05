@@ -4,7 +4,7 @@ class PcpVis {
     constructor(data) {
         this.data = data;
         const margin = {top: 30, right: 10, bottom: 10, left: 0};
-        this.width = 500 - margin.left - margin.right;
+        this.width = 800 - margin.left - margin.right;
         this.height = 400 - margin.top - margin.bottom;
         this.svg = d3.select("#pcp-chart")
             .append("svg")

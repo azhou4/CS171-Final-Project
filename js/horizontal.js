@@ -53,7 +53,7 @@ function loadData() {
         if (error) throw error;
 
         hdata = data;
-        updateHVis("Alphabetical");
+        updateHVis("Highest to Lowest");
 
     })
 
