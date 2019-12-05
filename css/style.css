@@ -132,7 +132,7 @@ p {
 }
 
 #introduction {
-	background-image: linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3) ), url('../img/editarrow.jpeg');
+	background-image: linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3) ), url('../img/plainbackground.jpg');
 }
 
 /* Autocomplete */
