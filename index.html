@@ -204,6 +204,10 @@
 
                         </select>
                     </div>
+                    <div class="autocomplete" style="width:300px;">
+                        <label for="hometown-map">I grew up in </label>
+                        <input id="hometown-map" type="text" name="myHometown" placeholder="Hometown" value="" onchange="getLatLong('hometown-map')">
+                    </div>
                     <div id="loading">Loading...</div>
                 </div>
 
@@ -214,21 +218,11 @@
         <!-- Page 5 -->
         <div class="section">
             <img src="img/opportunity.jpeg" style="width:50%">
-
             <h2 style="margin-left: 200px; margin-right: 200px; margin-top: 100px">It's not just race and hometown that affect social
                 mobility. Many other factors like gender, education, parental upbringing, and more affect our social mobility to
                 varying levels. We compiled data from the Opportunity Insights project to show how some of these factors will
                 affect your income percentile. In the next visualizations, we invite you to not only try out your demographics but also
                 test out different variables to witness the effects of these factors.</h2>
-
-            <!--            <h2>America's wealth gap is enlarging, with a large amount of wealth unequally distributed in the Top 1%.-->
-<!--                <br>Does Social Mobility-->
-<!--            still exist in America?</h2>-->
-<!--            <p>Watch this video from Politizane to learn more about the Wealth Inequality in America.</p>-->
-
-<!--            <iframe width="840" height="630"-->
-<!--                    src="https://www.youtube.com/embed/QPKKQnijnsM">-->
-<!--            </iframe>-->
         </div>
 
         <!-- Page 6 -->
@@ -265,28 +259,9 @@
                     </div>
                     <div class="autocomplete" style="width:300px;">
                         <label for="hometown">I grew up in </label>
-                        <input id="hometown" type="text" name="myHometown" placeholder="Hometown" value="Boston">
+                        <input id="hometown" type="text" name="myHometown" placeholder="Hometown" value="Boston" onchange="getLatLong('hometown')">
                     </div>
                 </div>
-            <!--                <div class="autocomplete" style="width:300px;">-->
-<!--                    <label for="Input4">My gender identity is best described as </label>-->
-<!--                    <input id="Input4" type="text" name="myGender" placeholder="Gender">-->
-<!--                </div>-->
-
-<!--                <div class="autocomplete" style="width:300px;">-->
-<!--                    <label for="hometown">I grew up in </label>-->
-<!--                    <input id="hometown" type="text" name="myHometown" placeholder="Hometown">-->
-<!--                </div>-->
-<!--                <div class="autocomplete" style="width:300px;">-->
-<!--                    <label for="Input3">My parent's income is </label>-->
-<!--                    <input id="Input3" type="text" name="myIncome" placeholder="Income">-->
-<!--                </div>-->
-<!--                <div class="autocomplete" style="width:300px;">-->
-<!--                    <label for="myInput">My race is best described as </label>-->
-<!--                    <input id="myInput" type="text" name="myRace" placeholder="Race">-->
-<!--                </div><br><br>-->
-                <button type="submit" class="btn btn-primary" onclick="getLatLong()">Submit</button>
-
             <div class="row">
                 <div class="col-sm">
                     <div id="pcp-chart"></div>
