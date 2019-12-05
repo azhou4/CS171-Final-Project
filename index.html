@@ -204,6 +204,10 @@
 
                         </select>
                     </div>
+                    <div class="autocomplete" style="width:300px;">
+                        <label for="hometown-map">I grew up in </label>
+                        <input id="hometown-map" type="text" name="myHometown" placeholder="Hometown" value="" onchange="getLatLong('hometown-map')">
+                    </div>
                     <div id="loading">Loading...</div>
                 </div>
 
@@ -255,28 +259,9 @@
                     </div>
                     <div class="autocomplete" style="width:300px;">
                         <label for="hometown">I grew up in </label>
-                        <input id="hometown" type="text" name="myHometown" placeholder="Hometown" value="Boston">
+                        <input id="hometown" type="text" name="myHometown" placeholder="Hometown" value="Boston" onchange="getLatLong('hometown')">
                     </div>
                 </div>
-            <!--                <div class="autocomplete" style="width:300px;">-->
-<!--                    <label for="Input4">My gender identity is best described as </label>-->
-<!--                    <input id="Input4" type="text" name="myGender" placeholder="Gender">-->
-<!--                </div>-->
-
-<!--                <div class="autocomplete" style="width:300px;">-->
-<!--                    <label for="hometown">I grew up in </label>-->
-<!--                    <input id="hometown" type="text" name="myHometown" placeholder="Hometown">-->
-<!--                </div>-->
-<!--                <div class="autocomplete" style="width:300px;">-->
-<!--                    <label for="Input3">My parent's income is </label>-->
-<!--                    <input id="Input3" type="text" name="myIncome" placeholder="Income">-->
-<!--                </div>-->
-<!--                <div class="autocomplete" style="width:300px;">-->
-<!--                    <label for="myInput">My race is best described as </label>-->
-<!--                    <input id="myInput" type="text" name="myRace" placeholder="Race">-->
-<!--                </div><br><br>-->
-                <button type="submit" class="btn btn-primary" onclick="getLatLong()">Submit</button>
-
             <div class="row">
                 <div class="col-sm">
                     <div id="pcp-chart"></div>
