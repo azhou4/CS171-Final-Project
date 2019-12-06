@@ -277,3 +277,11 @@ div.tooltip {
 .pcp-line:hover {
 	stroke: orange;
 }
+
+text {
+	font-family: "GothamLight";
+}
+
+text.pcp-label {
+	font-family: "GothamBold";
+}

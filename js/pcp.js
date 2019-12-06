@@ -4,7 +4,7 @@ class PcpVis {
     constructor(data) {
         this.data = data;
         const margin = {top: 30, right: 10, bottom: 10, left: 0};
-        this.width = 1000 - margin.left - margin.right;
+        this.width = 1300 - margin.left - margin.right;
         this.height = 600 - margin.top - margin.bottom;
         this.svg = d3.select("#pcp-chart")
             .append("svg")
@@ -39,12 +39,9 @@ class PcpVis {
 
     updateVis(county) {
         // Current Selections
-        console.log("selected", county)
         if (county == null) {
-            console.log("YES it's null")
             county = getLatLong("hometown");
         }
-        console.log("CHANGE IS HERE", county)
         const genderInput = document.getElementById("pcp-gender").value;
         const raceInput = document.getElementById("pcp-race").value;
         const incomeInput = document.getElementById("pcp-income").value;
@@ -109,9 +106,11 @@ class PcpVis {
         paths.exit().remove();
         paths.enter().append("path")
             .attr("d",  path)
+            .style("font-family", "RobotoLight")
             .attr("class", "pcp-line")
             .style("fill", "none")
-            .style("font-size", "14px")
+            .style("font-size", "20px")
+            .style("font-family", "RobotoLight")
             .style("stroke", function(d) {
                 if (selectedValues.includes(d.Gender) && selectedValues.includes(d.Race) && selectedValues.includes(d["Parent Income Percentile"])) {
                     return"#B37029"}
@@ -120,30 +119,25 @@ class PcpVis {
                 }}
                 )
             .style("opacity", function(d) {
-                    console.log(d)
                     if (selectedValues.includes(d.Gender) && selectedValues.includes(d.Race) && selectedValues.includes(d["Parent Income Percentile"])) {
-                        console.log("this person has been selected!!")
-                        return 0.8}
+                        return 0.5}
                     else {
                         return 0.2
                     }})
             .style("stroke-width", function(d) {
-                console.log(d)
                 if (selectedValues.includes(d.Gender) && selectedValues.includes(d.Race) && selectedValues.includes(d["Parent Income Percentile"])) {
-                    console.log("this person has been selected!!")
                     return "2px"}
                 else {
                     return "1px"
                 }})
             .on("mouseover", function(d) {
-                d3.select(this).style("stroke-width", "4px").style("stroke", "#000000").style("opacity", 0.5)
+                d3.select(this).style("stroke-width", "4px").style("stroke", "#4997B3").style("opacity", 0.9)
             })
             .on("mouseleave", function(d) {
                 if (selectedValues.includes(d.Gender) && selectedValues.includes(d.Race) && selectedValues.includes(d["Parent Income Percentile"])) {
-                    console.log("this person has been selected!!")
-                    d3.select(this).style("stroke-width", "2px").style("stroke", "#B37029").style("opacity", 0.8)}
+                    d3.select(this).style("stroke-width", "2px").style("stroke", "#B37029").style("opacity", 0.5)}
                 else {
-                    d3.select(this).style("stroke-width", "1px").style("stroke", "#756966")
+                    d3.select(this).style("stroke-width", "1px").style("stroke", "#756966").style("opacity", 0.2)
                 }});
 
         // Draw the axis:
@@ -151,7 +145,7 @@ class PcpVis {
         // For each dimension of the dataset I add a 'g' element:
             .data(Object.keys(vis.y)).enter()
             .append("g")
-            .style("font-size", "14px")
+            .style("font-size", "18px")
             // I translate this element to its right position on the x axis
             .attr("transform", d => "translate(" + vis.x(d) + ")")
             // And I build the axis with the call function
@@ -160,7 +154,8 @@ class PcpVis {
             // Add axis title
             .append("text")
             .style("text-anchor", "middle")
-            .attr("y", -9)
+            .attr("class", "pcp-label")
+            .attr("y", -15)
             .text(d => d)
             .style("fill", "black");
     }
