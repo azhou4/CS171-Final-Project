@@ -1,0 +1,10 @@
+*.csv
+*.dbf
+*.shp
+*.zip
+package.json
+package-lock.json
+python/node_modules
+*.idea
+*.DS_Store
+config.js
