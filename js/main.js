@@ -8,14 +8,9 @@ let pie;
 queue()
     .defer(d3.json, "data/kir_top20_county.json")
     .defer(d3.json, "data/kir_county.json")
-    .defer(d3.json, "data/coll_county.json")
-    .defer(d3.json, "data/comcoll_county.json")
-    .defer(d3.json, "data/hs_county.json")
-    .defer(d3.json, "data/grad_county.json")
-    .await(function(error, top20KirData, aveKirData, collData, comcollData, hsData, gradData){
+    .await(function(error, top20KirData, aveKirData){
         map = new MapVis(top20KirData);
         pcp = new PcpVis(aveKirData);
-        // pie = new PieVis(collData, comcollData, hsData, gradData);
     });
 
 const updateVis = point => map.updateVis(point);
