@@ -4,8 +4,8 @@ class PcpVis {
     constructor(data) {
         this.data = data;
         const margin = {top: 30, right: 10, bottom: 10, left: 0};
-        this.width = 900 - margin.left - margin.right;
-        this.height = 400 - margin.top - margin.bottom;
+        this.width = 1000 - margin.left - margin.right;
+        this.height = 600 - margin.top - margin.bottom;
         this.svg = d3.select("#pcp-chart")
             .append("svg")
             .attr("width", this.width + margin.left + margin.right)
@@ -138,7 +138,7 @@ class PcpVis {
                     console.log(d)
                     if (selectedValues.includes(d.Gender) && selectedValues.includes(d.Race) && selectedValues.includes(d["Parent Income Percentile"])) {
                         console.log("this person has been selected!!")
-                        return 0.9}
+                        return 0.8}
                     else {
                         return 0.2
                     }})
@@ -146,7 +146,7 @@ class PcpVis {
                 console.log(d)
                 if (selectedValues.includes(d.Gender) && selectedValues.includes(d.Race) && selectedValues.includes(d["Parent Income Percentile"])) {
                     console.log("this person has been selected!!")
-                    return "3px"}
+                    return "2px"}
                 else {
                     return "1px"
                 }})
@@ -156,7 +156,7 @@ class PcpVis {
             .on("mouseleave", function(d) {
                 if (selectedValues.includes(d.Gender) && selectedValues.includes(d.Race) && selectedValues.includes(d["Parent Income Percentile"])) {
                     console.log("this person has been selected!!")
-                    d3.select(this).style("stroke-width", "3px").style("stroke", "#B37029").style("opacity", 0.9)}
+                    d3.select(this).style("stroke-width", "2px").style("stroke", "#B37029").style("opacity", 0.8)}
                 else {
                     d3.select(this).style("stroke-width", "1px").style("stroke", "#756966")
                 }}
