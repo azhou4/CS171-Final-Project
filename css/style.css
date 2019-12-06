@@ -268,12 +268,14 @@ div.tooltip {
 }
 
 
-.state {
-	stroke-width: 10;
-}
-.tract {
-	/*stroke-width: .25;*/
-}
+/*.state {*/
+/*	stroke-width: 10;*/
+/*}*/
+
 .pcp-line:hover {
 	stroke: orange;
+}
+
+.map-svg {
+	background-color: #dcdbd5;
 }
