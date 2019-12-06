@@ -42,6 +42,8 @@ d3.json("data/pipelineData.json", function(error, graph) {
             .on("start", function() { this.parentNode.appendChild(this); })
             .on("drag", nodeSlide));
 
+    console.log("graph links", graph.links)
+    console.log("LINKKKK", sankey.link())
     // create the links between the buckets of data
     var flow = sankeysvg.append("g")
         .selectAll(".link")
@@ -50,15 +52,19 @@ d3.json("data/pipelineData.json", function(error, graph) {
         .append("path")
         .attr("class", "flow")
         .attr("d", sankey.link() )
-        .style("stroke-width", function(d) { return Math.max(1, d.dy); })
-        .sort(function(begin, end) { return end.dy - begin.dy; });
+        .style("stroke-width", function(d) {
+            console.log("ddddd", d, d.source.x, d.target.x)
+            return Math.max(1, d.dy); })
+        .sort(function(begin, end) {
+            console.log("begin end", begin, end, begin.dy, end.dy)
+            return end.dy - begin.dy; });
 
 
 
     // add the rectangles for the nodes and create text that hovers
     node
         .append("rect")
-        .attr("height", function(d) { return d.dy - 20; })
+        .attr("height", function(d) { return d.dy; })
         .attr("width", sankey.nodeWidth())
         .style("fill", function(x) { return x.color = color(x.race.replace(/ .*/, "")); })
         .style("stroke", function(x) { return d3.rgb(x.color); })

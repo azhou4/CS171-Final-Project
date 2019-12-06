@@ -59,7 +59,7 @@ class PcpVis {
                 [vis.x(p), vis.y[p](d[p])]));
         let avePercentiles = [];
         for (const race of races) {
-            console.log(race);
+            //console.log(race);
             for (const gender of genders) {
                 for (const pctile of pctiles) {
                     const avePercentile = vis.data["kir_" + race + "_" + gender + '_' + pctile][county.countyCode];
@@ -72,7 +72,8 @@ class PcpVis {
                 }
             }
         }
-        console.log("avepercentiles", avePercentiles);
+        //
+        //console.log("avepercentiles", avePercentiles);
         // Draw the lines
         vis.svg.selectAll("myPath")
             .data(avePercentiles)
@@ -83,7 +84,7 @@ class PcpVis {
             .style("font-size", "14px")
             .style("stroke",
                 function(d) {
-                console.log(d)
+                //console.log(d)
                 return "#B37029"
                 })
         // .style("opacity", 0.5);
