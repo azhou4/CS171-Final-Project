@@ -15,7 +15,7 @@ var color = d3.scaleOrdinal(d3.schemeCategory20);
 
 // Set the sankey diagram properties
 var sankey = d3.sankey()
-    .nodePadding(290)
+    .nodePadding(10)
     .nodeWidth(36)
     .size([sankey_width, sankey_height]);
 
@@ -58,7 +58,7 @@ d3.json("data/pipelineData.json", function(error, graph) {
     // add the rectangles for the nodes and create text that hovers
     node
         .append("rect")
-        .attr("height", function(d) { return d.dy; })
+        .attr("height", function(d) { return d.dy - 20; })
         .attr("width", sankey.nodeWidth())
         .style("fill", function(x) { return x.color = color(x.race.replace(/ .*/, "")); })
         .style("stroke", function(x) { return d3.rgb(x.color); })
@@ -67,7 +67,7 @@ d3.json("data/pipelineData.json", function(error, graph) {
 
     function nodeSlide(d) {
         d3.select(this)
-            .attr("transform", "translate("  + (d.x) + ","  + (d.y = Math.max(0, Math.min(height - d.dy + 300, d3.event.y))
+            .attr("transform", "translate("  + (d.x) + ","  + (d.y = Math.max(0, Math.min(sankey_height - d.dy + 300, d3.event.y))
             ) + ")");
         sankey.relayout();
         flow.attr("d", sankey.link() );
@@ -82,7 +82,7 @@ d3.json("data/pipelineData.json", function(error, graph) {
         .attr("text-anchor", "end")
         .attr("transform", null)
         .text(function(a) { return a.race; })
-        .filter(function(a) { return a.x < width / 2; })
+        .filter(function(a) { return a.x < sankey_width / 2; })
         .attr("x", 5 + sankey.nodeWidth())
         .attr("text-anchor", "start");
 
