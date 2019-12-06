@@ -1,0 +1,30 @@
+{
+  "nodes":[
+    {"node":0,"race":"Black"},
+    {"node":1,"race":"White"},
+    {"node":2,"race":"Asian"},
+    {"node":3,"race":"Hispanic"},
+    {"node":4,"race":"0 - 100 Percentile"},
+    {"node": 5, "race": "111"},
+    {"node": 6, "race": "222"},
+    {"node": 7, "race": "333"}
+
+  ],
+  "links":[
+    {"source":0,"target":4,"value":2},
+    {"source":0,"target":5,"value":1},
+    {"source":0,"target":6,"value":3},
+    {"source":0,"target":7,"value":2},
+    {"source":1,"target":4,"value":2},
+    {"source":1,"target":5,"value":2},
+    {"source":1,"target":6,"value":2},
+    {"source":1,"target":7,"value":2},
+    {"source":2,"target":4,"value":2},
+    {"source":2,"target":5,"value":2},
+    {"source":2,"target":6,"value":2},
+    {"source":2,"target":7,"value":2},
+    {"source":3,"target":4,"value":2},
+    {"source":3,"target":5,"value":2},
+    {"source":3,"target":6,"value":2},
+    {"source":3,"target":7,"value":2}
+  ]}
