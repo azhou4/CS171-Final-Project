@@ -6,13 +6,19 @@ var margin = {top: 10, right: 10, bottom: 10, left: 10},
 
 var color = d3.scaleOrdinal(d3.schemeCategory20);
 
+
+
 // append the svg canvas to the page
 var svg = d3.select("#pipeline2").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
     .attr("transform",
-        "translate(" + margin.left + "," + margin.top + ")");
+        "translate(" + margin.left + "," + margin.top + ")")
+
+
+
+
 
 // Set the sankey diagram properties
 var sankey = d3.sankey()
@@ -38,6 +44,31 @@ d3.json("data/sankey-formatted.json", function(error, graph) {
         .attr("d", path)
         .style("stroke-width", function(d) { return Math.max(1, d.dy); })
         .sort(function(a, b) { return b.dy - a.dy; });
+
+
+
+    link.on("mouseover", function(d) {
+        d3.select(this).transition()
+            .duration('50')
+
+        div.transition()
+            .duration(1000)
+            .style("opacity", .9);
+        div.html(d.source.race + " -> " + d.target.race + "<br/>" + d.value + "%")
+            .style("left", (d3.event.pageX) + "px")
+            .style("top", (d3.event.pageY - 28) + "px");
+    })
+        .on("mouseout", function(d, i) {
+            d3.select(this).transition().duration('50')
+            div.transition()
+                .duration(200)
+                .style("opacity", 0);
+
+        });
+
+
+
+
 //
 // add the link titles
     link.append("title")
@@ -91,4 +122,7 @@ d3.json("data/sankey-formatted.json", function(error, graph) {
         sankey.relayout();
         link.attr("d", path);
     }
+
+
+
 });
