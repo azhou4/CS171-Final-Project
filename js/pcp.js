@@ -38,6 +38,18 @@ class PcpVis {
     }
 
     updateVis(county) {
+        d3.select("#pcp-chart").selectAll("svg").remove()
+        // console.log("The svg", thesvg)
+        // console.log("the group", theg)
+
+        this.svg = d3.select("#pcp-chart")
+            .append("svg")
+            .attr("width", this.width + margin.left + margin.right)
+            .attr("height", this.height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform",
+                "translate(" + margin.left + "," + margin.top + ")");
+
         console.log("county", county)
         const vis = this;
         // The path function returns x and y coordinates of the line
@@ -75,7 +87,12 @@ class PcpVis {
                 return "#B37029"
                 })
         // .style("opacity", 0.5);
-        // .on("mouseover", highlight)
+            .on("mouseover", function(d) {
+                d3.select(this).style("stroke-width", "4px").style("stroke", "#000000").style("opacity", 0.5)
+            })
+            .on("mouseleave", function(d) {
+                d3.select(this).style("stroke-width", "2px").style("stroke", "#B37029")
+            })
         // .on("mouseleave", doNotHighlight );
 
 
@@ -97,6 +114,7 @@ class PcpVis {
             .text(d => d)
             .style("fill", "black")
         console.log("updating pcp");
+        // d3.selectAll("#pcp-chart > *").remove()
     }
 
     //console.log("test", x[1], y[1]("Native"))
@@ -126,4 +144,5 @@ class PcpVis {
     //         })
     //         .style("opacity", "1")
     // };
+
 }
