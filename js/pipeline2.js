@@ -1,8 +1,8 @@
 var units = "Widgets";
 
 var margin = {top: 10, right: 10, bottom: 10, left: 10},
-    width = 700 - margin.left - margin.right,
-    height = 300 - margin.top - margin.bottom;
+    width = 900 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
 
 var color = d3.scaleOrdinal(d3.schemeCategory20);
 
