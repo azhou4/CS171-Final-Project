@@ -58,7 +58,7 @@ d3.json("data/pipelineData.json", function(error, graph) {
     // add the rectangles for the nodes and create text that hovers
     node
         .append("rect")
-        .attr("height", function(d) { return d.dy - 20; })
+        .attr("height", function(d) { return d.dy; })
         .attr("width", sankey.nodeWidth())
         .style("fill", function(x) { return x.color = color(x.race.replace(/ .*/, "")); })
         .style("stroke", function(x) { return d3.rgb(x.color); })
