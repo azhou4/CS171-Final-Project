@@ -82,18 +82,6 @@ class PcpVis {
             selectedValues.push(parseInt(incomeInput.slice(1)))
         }
 
-        console.log("selection values", genderInput, raceInput, incomeInput, selectedValues)
-
-        d3.select("#pcp-chart").selectAll("svg").remove()
-
-        this.svg = d3.select("#pcp-chart")
-            .append("svg")
-            .attr("width", this.width + margin.left + margin.right)
-            .attr("height", this.height + margin.top + margin.bottom)
-            .append("g")
-            .attr("transform",
-                "translate(" + margin.left + "," + margin.top + ")");
-
         const vis = this;
         // The path function returns x and y coordinates of the line
         const path = d => d3.line()(Object.keys(vis.y).map(p =>
@@ -102,7 +90,6 @@ class PcpVis {
                 [vis.x(p), vis.y[p](d[p])]));
         let avePercentiles = [];
         for (const race of races) {
-            //console.log(race);
             for (const gender of genders) {
                 for (const pctile of pctiles) {
                     const avePercentile = vis.data["kir_" + race + "_" + gender + '_' + pctile][county.countyCode];
@@ -115,20 +102,18 @@ class PcpVis {
                 }
             }
         }
-        //
-        //console.log("avepercentiles", avePercentiles);
         // Draw the lines
-        vis.svg.selectAll("myPath")
-            .data(avePercentiles)
-            .enter().append("path")
+        const paths = vis.svg.selectAll(".pcp-line")
+            .data(avePercentiles, d => d);
+
+        paths.exit().remove();
+        paths.enter().append("path")
             .attr("d",  path)
             .attr("class", "pcp-line")
             .style("fill", "none")
             .style("font-size", "14px")
             .style("stroke", function(d) {
-                console.log(d)
                 if (selectedValues.includes(d.Gender) && selectedValues.includes(d.Race) && selectedValues.includes(d["Parent Income Percentile"])) {
-                    console.log("this person has been selected!!")
                     return"#B37029"}
                 else {
                     return "#756966"
@@ -159,10 +144,7 @@ class PcpVis {
                     d3.select(this).style("stroke-width", "2px").style("stroke", "#B37029").style("opacity", 0.8)}
                 else {
                     d3.select(this).style("stroke-width", "1px").style("stroke", "#756966")
-                }}
-                )
-        // .on("mouseleave", doNotHighlight );
-
+                }});
 
         // Draw the axis:
         vis.svg.selectAll("myAxis")
@@ -180,37 +162,6 @@ class PcpVis {
             .style("text-anchor", "middle")
             .attr("y", -9)
             .text(d => d)
-            .style("fill", "black")
-        console.log("updating pcp");
-        // d3.selectAll("#pcp-chart > *").remove()
+            .style("fill", "black");
     }
-
-    //console.log("test", x[1], y[1]("Native"))
-    // Highlight the specie that is hovered
-    // const highlight = function (d) {
-    //
-    //     selected_specie = d.Gender
-    //
-    //     // first every group turns grey
-    //     d3.selectAll(".line")
-    //         .transition().duration(200)
-    //         .style("stroke", "lightgrey")
-    //         .style("opacity", "0.2")
-    //     // Second the hovered specie takes its color
-    //     d3.selectAll("." + selected_specie)
-    //         .transition().duration(200)
-    //         .style("stroke", color(selected_specie))
-    //         .style("opacity", "1")
-    // };
-
-    // Unhighlight
-    // const doNotHighlight = function (d) {
-    //     d3.selectAll(".line")
-    //         .transition().duration(200).delay(1000)
-    //         .style("stroke", function (d) {
-    //             return (color(d.Gender))
-    //         })
-    //         .style("opacity", "1")
-    // };
-
 }
