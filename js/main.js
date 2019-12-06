@@ -15,10 +15,11 @@ queue()
     .await(function(error, top20KirData, aveKirData, collData, comcollData, hsData, gradData){
         map = new MapVis(top20KirData);
         pcp = new PcpVis(aveKirData);
-        pie = new PieVis(collData, comcollData, hsData, gradData);
+        // pie = new PieVis(collData, comcollData, hsData, gradData);
     });
 
 const updateVis = point => map.updateVis(point);
+const updatePcp = point => pcp.updateVis(point);
 
 var myLayout = new fullpage('#fullpage', {
     //options here

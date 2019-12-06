@@ -4,8 +4,8 @@ class PcpVis {
     constructor(data) {
         this.data = data;
         const margin = {top: 30, right: 10, bottom: 10, left: 0};
-        this.width = 900 - margin.left - margin.right;
-        this.height = 400 - margin.top - margin.bottom;
+        this.width = 1000 - margin.left - margin.right;
+        this.height = 600 - margin.top - margin.bottom;
         this.svg = d3.select("#pcp-chart")
             .append("svg")
             .attr("width", this.width + margin.left + margin.right)
@@ -38,9 +38,53 @@ class PcpVis {
     }
 
     updateVis(county) {
+        // Current Selections
+        console.log("selected", county)
+        if (county == null) {
+            console.log("YES it's null")
+            county = getLatLong("hometown");
+        }
+        console.log("CHANGE IS HERE", county)
+        const genderInput = document.getElementById("pcp-gender").value;
+        const raceInput = document.getElementById("pcp-race").value;
+        const incomeInput = document.getElementById("pcp-income").value;
+
+        // Encoding what the selections mean
+        const selectedValues = [];
+        if (genderInput == "All Genders") {
+            selectedValues.push("Female")
+            selectedValues.push("Male")
+        }
+        else {
+            selectedValues.push(genderInput)
+        }
+
+        if (raceInput == "All Races") {
+            selectedValues.push("White")
+            selectedValues.push("Black")
+            selectedValues.push("Asian")
+            selectedValues.push("Native American")
+            selectedValues.push("Hispanic")
+            selectedValues.push("Other")
+        }
+        else {
+            selectedValues.push(raceInput)
+        }
+
+        if (incomeInput == "all") {
+            selectedValues.push(1)
+            selectedValues.push(25)
+            selectedValues.push(50)
+            selectedValues.push(75)
+            selectedValues.push(100)
+        }
+        else {
+            selectedValues.push(parseInt(incomeInput.slice(1)))
+        }
+
+        console.log("selection values", genderInput, raceInput, incomeInput, selectedValues)
+
         d3.select("#pcp-chart").selectAll("svg").remove()
-        // console.log("The svg", thesvg)
-        // console.log("the group", theg)
 
         this.svg = d3.select("#pcp-chart")
             .append("svg")
@@ -50,7 +94,6 @@ class PcpVis {
             .attr("transform",
                 "translate(" + margin.left + "," + margin.top + ")");
 
-        console.log("county", county)
         const vis = this;
         // The path function returns x and y coordinates of the line
         const path = d => d3.line()(Object.keys(vis.y).map(p =>
@@ -82,18 +125,42 @@ class PcpVis {
             .attr("class", "pcp-line")
             .style("fill", "none")
             .style("font-size", "14px")
-            .style("stroke",
-                function(d) {
-                //console.log(d)
-                return "#B37029"
-                })
-        // .style("opacity", 0.5);
+            .style("stroke", function(d) {
+                console.log(d)
+                if (selectedValues.includes(d.Gender) && selectedValues.includes(d.Race) && selectedValues.includes(d["Parent Income Percentile"])) {
+                    console.log("this person has been selected!!")
+                    return"#B37029"}
+                else {
+                    return "#756966"
+                }}
+                )
+            .style("opacity", function(d) {
+                    console.log(d)
+                    if (selectedValues.includes(d.Gender) && selectedValues.includes(d.Race) && selectedValues.includes(d["Parent Income Percentile"])) {
+                        console.log("this person has been selected!!")
+                        return 0.8}
+                    else {
+                        return 0.2
+                    }})
+            .style("stroke-width", function(d) {
+                console.log(d)
+                if (selectedValues.includes(d.Gender) && selectedValues.includes(d.Race) && selectedValues.includes(d["Parent Income Percentile"])) {
+                    console.log("this person has been selected!!")
+                    return "2px"}
+                else {
+                    return "1px"
+                }})
             .on("mouseover", function(d) {
                 d3.select(this).style("stroke-width", "4px").style("stroke", "#000000").style("opacity", 0.5)
             })
             .on("mouseleave", function(d) {
-                d3.select(this).style("stroke-width", "2px").style("stroke", "#B37029")
-            })
+                if (selectedValues.includes(d.Gender) && selectedValues.includes(d.Race) && selectedValues.includes(d["Parent Income Percentile"])) {
+                    console.log("this person has been selected!!")
+                    d3.select(this).style("stroke-width", "2px").style("stroke", "#B37029").style("opacity", 0.8)}
+                else {
+                    d3.select(this).style("stroke-width", "1px").style("stroke", "#756966")
+                }}
+                )
         // .on("mouseleave", doNotHighlight );
 
 
