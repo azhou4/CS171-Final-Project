@@ -4,6 +4,7 @@ const pctiles = ['p1', 'p25', 'p50', 'p75', 'p100'];
 
 let map;
 let pcp;
+let pie;
 queue()
     .defer(d3.json, "data/kir_top20_county.json")
     .defer(d3.json, "data/kir_county.json")
@@ -14,6 +15,7 @@ queue()
     .await(function(error, top20KirData, aveKirData, collData, comcollData, hsData, gradData){
         map = new MapVis(top20KirData);
         pcp = new PcpVis(aveKirData);
+        pie = new PieVis(collData, comcollData, hsData, gradData);
     });
 
 const updateVis = point => map.updateVis(point);
