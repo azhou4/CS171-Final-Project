@@ -32,55 +32,23 @@ class PcpVis {
             .range([0, this.width])
             .padding(1)
             .domain(Object.keys(this.y));
-
+        this.defaultCounty = {countyName: "Suffolk", countyCode: "25025"}
         // Initialize with Boston
-        this.updateVis({countyName: "Suffolk", countyCode: "25025"})
+        this.updateVis(this.defaultCounty)
     }
 
     updateVis(county) {
-        // Current Selections
-        if (county == null) {
-            county = getLatLong("hometown");
-        }
-        const genderInput = document.getElementById("pcp-gender").value;
-        const raceInput = document.getElementById("pcp-race").value;
-        const incomeInput = document.getElementById("pcp-income").value;
-
-        // Encoding what the selections mean
-        const selectedValues = [];
-        if (genderInput == "All Genders") {
-            selectedValues.push("Male")
-            selectedValues.push("Female")
-
-        }
-        else {
-            selectedValues.push(genderInput)
-        }
-
-        if (raceInput == "All Races") {
-            selectedValues.push("White")
-            selectedValues.push("Black")
-            selectedValues.push("Asian")
-            selectedValues.push("Native American")
-            selectedValues.push("Hispanic")
-            selectedValues.push("Other")
-        }
-        else {
-            selectedValues.push(raceInput)
-        }
-
-        if (incomeInput == "all") {
-            selectedValues.push(1)
-            selectedValues.push(25)
-            selectedValues.push(50)
-            selectedValues.push(75)
-            selectedValues.push(100)
-        }
-        else {
-            selectedValues.push(parseInt(incomeInput.slice(1)))
-        }
-
         const vis = this;
+        // Current Selections
+        if (!county) {
+            county = this.defaultCounty;
+        }
+        // county = vis.defaultCounty;
+        // const genderInput = document.getElementById("pcp-gender").value;
+        const genderInput = () => $("#pcp-gender").val();
+        const raceInput =  () => document.getElementById("pcp-race").value;
+        const incomeInput = () => document.getElementById("pcp-income").value;
+
         // The path function returns x and y coordinates of the line
         const path = d => d3.line()(Object.keys(vis.y).map(p =>
             p === "Gender" || p === "Race" ?
@@ -104,43 +72,43 @@ class PcpVis {
         const paths = vis.svg.selectAll(".pcp-line")
             .data(avePercentiles, d => d);
 
+        const shouldBeHighlighted = (d) =>
+        {
+            console.log(genderInput());
+            let highlightStatus = true;
+            if (genderInput() !== "All") {
+                highlightStatus = highlightStatus && d.Gender === genderInput();
+            }
+            if (raceInput() !== "All Races") {
+                highlightStatus = highlightStatus && d.Race === raceInput();
+            }
+            if (incomeInput() !== "all") {
+                highlightStatus = highlightStatus && d["Parent Income Percentile"] === parseInt(incomeInput().slice(1));
+            }
+            return highlightStatus;
+        };
+
         paths.exit().remove();
         paths.enter().append("path")
             .attr("d",  path)
             .attr("class", "pcp-line")
             .style("fill", "none")
-            .style("font-size", "20px")
-            .style("font-family", "RobotoLight")
-            .style("stroke", function(d) {
-                if (selectedValues.includes(d.Gender) && selectedValues.includes(d.Race) && selectedValues.includes(d["Parent Income Percentile"])) {
-                    return"#B37029"}
-                else {
-                    return "#756966"
-                }}
-                )
-            .style("opacity", function(d) {
-                    if (selectedValues.includes(d.Gender) && selectedValues.includes(d.Race) && selectedValues.includes(d["Parent Income Percentile"])) {
-                        return 0.5}
-                    else {
-                        return 0.2
-                    }})
-            .style("stroke-width", function(d) {
-                if (selectedValues.includes(d.Gender) && selectedValues.includes(d.Race) && selectedValues.includes(d["Parent Income Percentile"])) {
-                    return "2px"}
-                else {
-                    return "1px"
-                }})
+            .style("font-size", "14px")
+            .style("stroke", d => shouldBeHighlighted(d) ? "#B37029" : "#756966")
+            .style("opacity", d => shouldBeHighlighted(d) ? .8 : .2)
+            .style("stroke-width", d => shouldBeHighlighted(d) ? "2px" : "1px")
             .on("mouseover", function(d) {
-                d3.select(this).style("stroke-width", "4px").style("stroke", "#4997B3").style("opacity", 0.9)
+                console.log(d, shouldBeHighlighted(d));
+                d3.select(this).style("stroke-width", "4px").style("stroke", "#000000").style("opacity", 0.5)
             })
             .on("mouseleave", function(d) {
-                if (selectedValues.includes(d.Gender) && selectedValues.includes(d.Race) && selectedValues.includes(d["Parent Income Percentile"])) {
-                    d3.select(this).style("stroke-width", "2px").style("stroke", "#B37029").style("opacity", 0.5)}
+                if (shouldBeHighlighted(d)) {
+                    d3.select(this).style("stroke-width", "2px").style("stroke", "#B37029").style("opacity", 0.8)}
                 else {
                     d3.select(this).style("stroke-width", "1px").style("stroke", "#756966").style("opacity", 0.2)
                 }});
 
-        // Draw the axis:
+        // Draw the axis
         vis.svg.selectAll("myAxis")
         // For each dimension of the dataset I add a 'g' element:
             .data(Object.keys(vis.y)).enter()

@@ -267,13 +267,6 @@ div.tooltip {
 	color: white;
 }
 
-
-.state {
-	stroke-width: 10;
-}
-.tract {
-	/*stroke-width: .25;*/
-}
 .pcp-line:hover {
 	stroke: orange;
 }
@@ -284,4 +277,7 @@ text {
 
 text.pcp-label {
 	font-family: "GothamBold";
+
+.map-svg {
+	background-color: #dcdbd5;
 }
