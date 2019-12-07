@@ -3,7 +3,7 @@ class PcpVis {
     constructor(data) {
         this.data = data;
         const margin = {top: 30, right: 10, bottom: 10, left: 0};
-        this.width = 1250 - margin.left - margin.right;
+        this.width = 1000 - margin.left - margin.right;
         this.height = 600 - margin.top - margin.bottom;
         this.svg = d3.select("#pcp-chart")
             .append("svg")
@@ -112,7 +112,7 @@ class PcpVis {
         // For each dimension of the dataset I add a 'g' element:
             .data(Object.keys(vis.y)).enter()
             .append("g")
-            .style("font-size", "18px")
+            .style("font-size", "14px")
             // I translate this element to its right position on the x axis
             .attr("transform", d => "translate(" + vis.x(d) + ")")
             // And I build the axis with the call function
