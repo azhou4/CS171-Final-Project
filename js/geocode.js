@@ -5,9 +5,11 @@ function initialize() {
 
 function getLatLong(id) {
     const address = document.getElementById(id).value;
-    console.log("ADDRESS", address);
+    // Sync addresses input into both buttons
     $("#hometown").val(address);
     $("#hometown-map").val(address);
+
+    // Query Google Maps Geocoding API
     geocoder.geocode( { 'address': address}, function(results, status) {
         if (status === 'OK') {
             console.log("selected location: ", [results[0].geometry.location.lng(), results[0].geometry.location.lat()]);
@@ -18,5 +20,4 @@ function getLatLong(id) {
     });
 
     updateHometown();
-
 }
