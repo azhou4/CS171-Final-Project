@@ -3,8 +3,9 @@ const races = ['white', 'black', 'hisp', 'asian', 'natam', 'other'];
 const genders = ['male', 'female'];
 const pctiles = ['p1', 'p25', 'p50', 'p75', 'p100'];
 const colors = {
-    orange: "#B37029"
-}
+    orange: "#B37029",
+    gray: "#756966",
+};
 
 let map;
 let pcp;

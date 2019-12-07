@@ -112,7 +112,7 @@ class MapVis {
         const legend = d3.select("#map-container")
             .append("svg")
             .attr("width", 300)
-            .attr("height", 50)
+            .attr("height", 60)
             .append("g")
             .attr("class", "legend")
             .attr("transform", "translate(0, 0)");
@@ -121,16 +121,20 @@ class MapVis {
             .enter()
             .append('rect')
             .attr("x", function(d) { return d; })
-            .attr("y", 10)
+            .attr("y", 15)
             .attr("height", 10)
             .attr("width", vis.sectionWidth)
             .attr('fill', function(d, i) { return vis.legendColorScale(i)});
         legend.append("text").text(() => "0%")
-            .attr("transform","translate(0,30)")
+            .attr("transform","translate(0,40)")
+            .style("fill", "black")
+            .style("font-size", "10px");
+        legend.append("text").text(() => "Probability of Reaching Top 20%")
+            .attr("transform","translate(25,10)")
             .style("fill", "black")
             .style("font-size", "10px");
         legend.append("text").text(() => "100%")
-            .attr("transform","translate("+(vis.legendWidth-20)+",30)")
+            .attr("transform","translate("+(vis.legendWidth-20)+",40)")
             .style("font-size", "10px");
     }
 }

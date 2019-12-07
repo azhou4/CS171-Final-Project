@@ -32,8 +32,7 @@ class PcpVis {
             .range([0, this.width])
             .padding(1)
             .domain(Object.keys(this.y));
-        this.defaultCounty = {countyName: "Suffolk", countyCode: "25025"}
-        // Initialize with Boston
+        this.defaultCounty = {countyName: "Suffolk", countyCode: "25025"};
         this.updateVis(this.defaultCounty)
     }
 
@@ -44,17 +43,18 @@ class PcpVis {
         if (!county) {
             county = this.defaultCounty;
         }
-        // county = vis.defaultCounty;
-        // const genderInput = document.getElementById("pcp-gender").value;
         const genderInput = () => $("#pcp-gender").val();
         const raceInput =  () => document.getElementById("pcp-race").value;
         const incomeInput = () => document.getElementById("pcp-income").value;
 
         // The path function returns x and y coordinates of the line
-        const path = d => d3.line()(Object.keys(vis.y).map(p =>
-            p === "Gender" || p === "Race" ?
-                [vis.x(p), vis.y[p](d[p]) + vis.y[p].bandwidth() / 2] :
-                [vis.x(p), vis.y[p](d[p])]));
+        const path = d => {
+            console.log("path called");
+             return d3.line()(Object.keys(vis.y).map(p =>
+                p === "Gender" || p === "Race" ?
+                    [vis.x(p), vis.y[p](d[p]) + vis.y[p].bandwidth() / 2] :
+                    [vis.x(p), vis.y[p](d[p])]));
+        }
         let avePercentiles = [];
         for (const race of races) {
             for (const gender of genders) {
@@ -70,12 +70,13 @@ class PcpVis {
             }
         }
         // Draw the lines
+        console.log(avePercentiles);
         const paths = vis.svg.selectAll(".pcp-line")
+            // .data(avePercentiles, d => d.Gender + d.Race + d['Parent Income Percentile'] + d['Predicted Income Percentile']);
             .data(avePercentiles, d => d);
-
         const shouldBeHighlighted = (d) =>
         {
-            console.log(genderInput());
+            // console.log(genderInput(), d);
             let highlightStatus = true;
             if (genderInput() !== "All") {
                 highlightStatus = highlightStatus && d.Gender === genderInput();
@@ -88,14 +89,17 @@ class PcpVis {
             }
             return highlightStatus;
         };
-
-        paths.exit().remove();
+        paths.exit().remove()
+        // console.log(paths.enter().append("path").data())
         paths.enter().append("path")
-            .attr("d",  path)
+            .attr("d",  d => path(d))
             .attr("class", "pcp-line")
             .style("fill", "none")
-            .style("font-size", "14px")
-            .style("stroke", d => shouldBeHighlighted(d) ? "#B37029" : "#756966")
+            .style("font-size", () => {
+                console.log("count");
+                return "14px";
+            })
+            .style("stroke", d => shouldBeHighlighted(d) ? colors.orange : colors.gray)
             .style("opacity", d => shouldBeHighlighted(d) ? .8 : .2)
             .style("stroke-width", d => shouldBeHighlighted(d) ? "2px" : "1px")
             .on("mouseover", function(d) {
@@ -104,10 +108,11 @@ class PcpVis {
             })
             .on("mouseleave", function(d) {
                 if (shouldBeHighlighted(d)) {
-                    d3.select(this).style("stroke-width", "2px").style("stroke", "#B37029").style("opacity", 0.8)}
+                    d3.select(this).style("stroke-width", "2px").style("stroke", colors.orange).style("opacity", 0.8)}
                 else {
-                    d3.select(this).style("stroke-width", "1px").style("stroke", "#756966")
+                    d3.select(this).style("stroke-width", "1px").style("stroke", colors.gray)
                 }});
+        // console.log();
 
         // Draw the axis
         vis.svg.selectAll("myAxis")
