@@ -91,7 +91,7 @@ d3.json("data/sankey-formatted.json", function(info, grid) {
         .attr("width", sankey.nodeWidth())
         .style("fill", function(d) {
             return d.scale_color = scale_color(d.race.replace(/ .*/, "")); })
-        .style("stroke", function(d) {return d3.rgb(d.scale_color).darker(24); })
+        .style("stroke", function(d) {return d3.rgb(d.scale_color).darker(23); })
         .append("title")
         .text(function(d) {
             return d.race + "\n" +  "100% Representation"; });
