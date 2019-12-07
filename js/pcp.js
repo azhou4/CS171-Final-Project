@@ -1,10 +1,9 @@
-
+// Create the Parallel Coordinate Plot Vis
 class PcpVis {
-
     constructor(data) {
         this.data = data;
         const margin = {top: 30, right: 10, bottom: 10, left: 0};
-        this.width = 1000 - margin.left - margin.right;
+        this.width = 1300 - margin.left - margin.right;
         this.height = 600 - margin.top - margin.bottom;
         this.svg = d3.select("#pcp-chart")
             .append("svg")
@@ -38,7 +37,6 @@ class PcpVis {
 
     updateVis(county) {
         const vis = this;
-
         // Current Selections
         if (!county) {
             county = this.defaultCounty;
@@ -104,7 +102,7 @@ class PcpVis {
             .style("stroke-width", d => shouldBeHighlighted(d) ? "2px" : "1px")
             .on("mouseover", function(d) {
                 console.log(d, shouldBeHighlighted(d));
-                d3.select(this).style("stroke-width", "4px").style("stroke", "#000000").style("opacity", 0.5)
+                d3.select(this).style("stroke-width", "4px").style("stroke", "#4997B3").style("opacity", 0.9)
             })
             .on("mouseleave", function(d) {
                 if (shouldBeHighlighted(d)) {
@@ -119,7 +117,7 @@ class PcpVis {
         // For each dimension of the dataset I add a 'g' element:
             .data(Object.keys(vis.y)).enter()
             .append("g")
-            .style("font-size", "14px")
+            .style("font-size", "18px")
             // I translate this element to its right position on the x axis
             .attr("transform", d => "translate(" + vis.x(d) + ")")
             // And I build the axis with the call function
@@ -128,7 +126,8 @@ class PcpVis {
             // Add axis title
             .append("text")
             .style("text-anchor", "middle")
-            .attr("y", -9)
+            .attr("class", "pcp-label")
+            .attr("y", -15)
             .text(d => d)
             .style("fill", "black");
     }

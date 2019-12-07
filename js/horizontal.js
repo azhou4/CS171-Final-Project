@@ -1,5 +1,6 @@
+// horizontal bar chart
 var margin = {top: 20, right: 20, bottom: 30, left: 40},
-    barwidth = 700 - margin.left - margin.right
+    barwidth = 700 - margin.left - margin.right;
     barheight = 500 - margin.top - margin.bottom;
 
 var hbar = d3.select("#horizontal-bar")
@@ -8,7 +9,7 @@ var hbar = d3.select("#horizontal-bar")
     .attr("height", barheight)
     .append("g")
     .attr("transform",
-        "translate(" + (margin.left + 70) + "," + (margin.top) + ")");
+        "translate(" + (margin.left + 90) + "," + (margin.top) + ")");
 
 var hbarx = d3.scaleLinear()
     .range([0, barwidth-100]);
@@ -17,6 +18,7 @@ var hbary = d3.scaleBand()
     .range([barheight - 80, 0])
     .paddingInner(0.1);
 
+// Add axis labels
 hbar.append("text")
     .attr("x", 140)
     .attr("y", 420)
@@ -28,7 +30,6 @@ hbar.append("text")
     .text("Country");
 
 // Add the X axis
-
 hbar.append("g")
     .style("font-size", "14px")
     .attr("transform", "translate(0," + (barheight - 80) + ")")
@@ -54,21 +55,17 @@ function loadData() {
 
         hdata = data;
         updateHVis("Highest to Lowest");
-
     })
 
 }
 
 function updateHVis() {
-    //console.log("hdata", hdata);
     var val = document.getElementById("selection").value;
-    //console.log("VALLL", val)
     if (val == "Alphabetical") {
         hdata.sort(function(a,b) {
             var textA = a["country"]
             var textB = b["country"]
             return textB.localeCompare(textA)})
-        //console.log("hdataaa", hdata)
     }
     else if (val == "Highest to Lowest") {
         hdata.sort(function(a,b) {return a["earning"] - b['earning']})
@@ -86,7 +83,7 @@ function updateHVis() {
     var hbaradd = hbars.enter().append("rect")
         .attr("class", "hbar")
 
-
+    // Tooltips and highlight on mouseover
     hbaradd.on("mouseover", function(d) {
             d3.select(this).transition()
                 .duration('50')
@@ -119,6 +116,7 @@ function updateHVis() {
         .attr("y", function(d) { return hbary(d.country);})
         .attr("height", hbary.bandwidth())
         .style("fill", function(d) {
+            // orange if the country is US
             if (d.country == "United States") {
                 return "#FFAA4D"
             }
@@ -127,14 +125,9 @@ function updateHVis() {
             }
         })
 
-    var yAxisbar = d3.axisLeft(hbary)
+    var yAxisbar = d3.axisLeft(hbary);
 
     // add the y Axis
     d3.select(".y-axis").transition().duration(1000).call(yAxisbar);
-
-
-
     hbars.exit().remove()
-
-
 }
