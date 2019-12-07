@@ -16,4 +16,7 @@ function getLatLong(id) {
             alert('Geocode was not successful for the following reason: ' + status);
         }
     });
+
+    updateHometown();
+
 }

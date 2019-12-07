@@ -49,8 +49,9 @@ class PcpVis {
         // Encoding what the selections mean
         const selectedValues = [];
         if (genderInput == "All Genders") {
-            selectedValues.push("Female")
             selectedValues.push("Male")
+            selectedValues.push("Female")
+
         }
         else {
             selectedValues.push(genderInput)
@@ -106,7 +107,6 @@ class PcpVis {
         paths.exit().remove();
         paths.enter().append("path")
             .attr("d",  path)
-            .style("font-family", "RobotoLight")
             .attr("class", "pcp-line")
             .style("fill", "none")
             .style("font-size", "20px")
