@@ -32,7 +32,7 @@ d3.json("data/sankey-formatted.json", function(info, grid) {
     sankey
         .nodes(grid.nodes)
         .links(grid.links)
-        .layout(32);
+        .layout(25);
 
 // create the links that flow between the buckets
     var flow = svg.append("g").selectAll(".link")
@@ -108,16 +108,13 @@ d3.json("data/sankey-formatted.json", function(info, grid) {
         .attr("x", 6 + sankey.nodeWidth())
         .attr("text-anchor", "start");
 
-// the function for moving the buckets up and down
+// the function for moving the buckets up and down and left to right
     function bucketSlide(a) {
         d3.select(this).attr("transform",
-            "translate(" + a.x + "," + (
-                a.y = Math.max(0, Math.min(height - a.dy, d3.event.y))
-            ) + ")");
+            "translate(" + (a.x = Math.max(0, Math.min(width - a.dx, d3.event.x))) + "," + (
+                a.y = Math.max(0, Math.min(height - a.dy, d3.event.y))) + ")");
         sankey.relayout();
         flow.attr("d", direction);
     }
-
-
 
 });
