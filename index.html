@@ -89,37 +89,44 @@
         <!-- Page 3 -->
         <div class="section">
             <div class="row">
-                <div class="col-sm">
-                    <br><br>
-                    <img src="img/flag.jpg" style="width: 90%">
+                <div class="col-4">
+                    <img src="img/liberty.png" style="width:80%">
                 </div>
-                <div class="col-sm" style="text-align: left">
-                    <h1 class="page-title">The Land of Opportunity</h1>
-                    <p>Many Americans strongly believe the US to be a "land of opportunity" that offers every child an equal
+                <div class="col-8">
+                    <h1 class="page-title" style="margin-left:-100px !important; text-align:center">The Land of Opportunity</h1>
+
+                    <p style="text-align: center; margin-left:0px !important;"> <i>"Give me your tired, your poor,<br>
+                        Your huddled masses yearning to breathe free,<br>
+                        The wretched refuse of your teeming shore.<br>
+                        Send these, the homeless, tempest-tost to me,<br>
+                        I lift my lamp beside the golden door!"<br></i>
+                        - Excerpt from The New Colossus, inscribed on the Statue of Liberty
+                    </p>
+                    <p style="margin-left:0px !important;">Many Americans strongly believe the US to be a "land of opportunity" that offers every child an equal
                         chance at social and economic mobility. The idea that Americans rise from humble origins to riches is
                         part of the American Dream. </p>
-                    <p> <i>The American Dream Report</i>, a study of the Economic Mobility Project, found that Americans
+                    <p style="margin-left:0px !important;"> <i>The American Dream Report</i>, a study of the Economic Mobility Project, found that Americans
                         surveyed were more likely than citizens of other countries to agree with statements like:</p>
-                    <ul>
+                    <ul style="margin-left:0px !important;">
                         <li>"People get rewarded for intelligence and skill"</li>
                         <li>"People get rewarded for their efforts"</li>
                     </ul>
-                    <p>and less likely to agree with statements like:</p>
-                    <ul>
+                    <p style="margin-left:0px !important;">and less likely to agree with statements like:</p>
+                    <ul style="margin-left:0px !important;">
                         <li>"Coming from a wealthy family is 'essential' and 'very important' to getting ahead"</li>
                         <li>"Income differences in my country are too large"</li>
                         <li>"It is the responsibility of government to reduce differences in income"</li>
                     </ul>
-                    <p>But is America truly still a Land of Opportunity?</p>
+                    <p style="margin-left:0px !important;">But is America truly still a Land of Opportunity?</p>
                 </div>
             </div>
         </div>
 
         <!-- Page 4 -->
         <div class="section" >
-            <h2 class="page-title">The Current Distribution of Income Percentile by Race in America</h2>
+            <h2 class="page-title">The Current Distribution of Income Percentile by Race in America</h2><br>
             <div id="pipeline2"></div>
-
+                    <br><br>
                     <p>The visualization above is a Sankey diagram that depicts the income percentiles of
                         different races in America. The width of the connections represents a flow rate, and is a
                         proportion of the entire population. Looking at the data, it's clear that the level of social mobility is not the same for every American.
@@ -136,9 +143,8 @@
                 <h1>Probability of Reaching the Top 20% of the National Income Distribution</h1>
                 <p>Besides race, one factor that perhaps unsurprisingly affects
                     social mobility is hometown or geographic location. Hometown can account for multiple factors like population
-                    demographics, racial segregation, quality of education, living quality, and more. Our data shows
-                    that the county you are from has a great effect on your probability to reach the Top 20
-                    income percentile.</p>
+                    demographics, racial segregation, quality of education, living quality, and more. Our data shows one's county of origin
+                    has a great effect on one's chances of reaching the Top 20 income percentile.</p>
                 <div id="map-selections">
                     <div class="form-group">
                         <label for="race">Race/ethnicity</label>
@@ -186,7 +192,7 @@
                 mobility. Many other factors like gender, education, parental upbringing, and more affect our social mobility to
                 varying levels. We compiled data from the Opportunity Insights project to show how some of these factors will
                 affect your income percentile. In the next visualizations, we invite you to not only try out your demographics but also
-                test out different variables to witness the effects of these factors.</h2>
+                test out different variables to witness the effects of these factors.</h2><br>
             <img src="img/opportunity.jpeg" style="width:50%">
         </div>
 
@@ -197,13 +203,7 @@
 
                 <div class="form-group">
                     <div class="form-group">
-                        <select style = "width: 150px" class="form-control" id="pcp-gender" onchange="updatePcp()">
-                            <option value="All">All Genders</option>
-                            <option value="Female">Female</option>
-                            <option value="Male">Male</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
+                        <label for="pcp-race">Race</label>
                         <select style = "width: 150px" class="form-control" id="pcp-race" onchange="updatePcp()">
                             <option>All Races</option>
                             <option>White</option>
@@ -215,6 +215,15 @@
                         </select>
                     </div>
                     <div class="form-group">
+                        <label for="pcp-gender">Gender</label>
+                        <select style = "width: 150px" class="form-control" id="pcp-gender" onchange="updatePcp()">
+                            <option value="All">All Genders</option>
+                            <option value="Female">Female</option>
+                            <option value="Male">Male</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="pcp-income">Parental Income Percentile</label>
                         <select style = "width: 350px" class="form-control" id="pcp-income" onchange="updatePcp()">
                             <option value="all">All Income Percentiles</option>
                             <option value="p100">Top 1% (100th percentile)</option>
@@ -225,7 +234,7 @@
                         </select>
                     </div>
                     <div class="autocomplete" style="width:300px;">
-                        <label for="hometown">I grew up in </label>
+                        <label for="hometown">U.S. Hometown </label>
                         <input id="hometown" type="text" name="myHometown" placeholder="Hometown" value="Boston" onchange="getLatLong('hometown')">
                     </div>
                 </div>
