@@ -5,7 +5,7 @@ class PcpVis {
     constructor(data) {
         this.data = data;
         const margin = {top: 30, right: 10, bottom: 10, left: 0};
-        this.width = 1300 - margin.left - margin.right;
+        this.width = 1000 - margin.left - margin.right;
         this.height = 600 - margin.top - margin.bottom;
         this.svg = d3.select("#pcp-chart")
             .append("svg")
@@ -13,7 +13,7 @@ class PcpVis {
             .attr("height", this.height + margin.top + margin.bottom)
             .append("g")
             .attr("transform",
-                "translate(" + margin.left + "," + margin.top + ")");
+                "translate(" + 0 + "," + margin.top + ")");
         const calculate = d3.extent([0, 100]);
         const percentileScale = d3.scaleLinear()
             .domain(calculate)
@@ -62,7 +62,8 @@ class PcpVis {
         vis.svg.selectAll("myAxis")
             .data(Object.keys(vis.y)).enter()
             .append("g")
-            .style("font-size", "18px")
+
+            .style("font-size", "14px")
             .attr("transform", d => "translate(" + vis.x(d) + ")")
             .each(function(d) {
                 d3.select(this).call(d3.axisLeft().scale(vis.y[d])); })
