@@ -9,7 +9,7 @@ var hbar = d3.select("#horizontal-bar")
     .attr("height", barheight)
     .append("g")
     .attr("transform",
-        "translate(" + (margin.left + 70) + "," + (margin.top) + ")");
+        "translate(" + (margin.left + 90) + "," + (margin.top) + ")");
 
 var hbarx = d3.scaleLinear()
     .range([0, barwidth-100]);
