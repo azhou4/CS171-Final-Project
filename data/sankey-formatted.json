@@ -7,7 +7,8 @@
     {"node":4,"race":"50th - 75th Percentile"},
     {"node": 5, "race": "75th-100th Percentile"},
     {"node": 6, "race": "1st - 25th Percentile"},
-    {"node": 7, "race": "25th - 50th Percentile"}
+    {"node": 7, "race": "25th - 50th Percentile"},
+    {"node": 8, "race": "Natives"}
 
   ],
   "links":[
@@ -26,5 +27,9 @@
     {"source":3,"target":4,"value":17},
     {"source":3,"target":5,"value":9},
     {"source":3,"target":6,"value":41},
-    {"source":3,"target":7,"value":23}
+    {"source":3,"target":7,"value":23},
+    {"source":8,"target":4,"value":19},
+    {"source":8,"target":5,"value":10.1},
+    {"source":8,"target":6,"value":39.9},
+    {"source":8,"target":7,"value":31}
   ]}

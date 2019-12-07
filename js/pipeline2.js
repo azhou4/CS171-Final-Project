@@ -17,9 +17,6 @@ var svg = d3.select("#pipeline2").append("svg")
         "translate(" + margin.left + "," + margin.top + ")")
 
 
-
-
-
 // Set the sankey diagram properties
 var sankey = d3.sankey()
     .nodeWidth(36)
@@ -56,7 +53,7 @@ d3.json("data/sankey-formatted.json", function(error, graph) {
             .style("opacity", .9);
         div.html(d.source.race + " -> " + d.target.race + "<br/>" + d.value + "%")
             .style("left", (d3.event.pageX) + "px")
-            .style("top", (d3.event.pageY - 28) + "px");
+            .style("top", (d3.event.pageY - 40) + "px");
     })
         .on("mouseout", function(d, i) {
             d3.select(this).transition().duration('50')
