@@ -17,9 +17,6 @@ var svg = d3.select("#pipeline2").append("svg")
         "translate(" + margin.left + "," + margin.top + ")")
 
 
-
-
-
 // Set the sankey diagram properties
 var sankey = d3.sankey()
     .nodeWidth(36)
@@ -49,14 +46,14 @@ d3.json("data/sankey-formatted.json", function(error, graph) {
 
     link.on("mouseover", function(d) {
         d3.select(this).transition()
-            .duration('50')
+            .duration('25')
 
         div.transition()
-            .duration(1000)
+            .duration(900)
             .style("opacity", .9);
         div.html(d.source.race + " -> " + d.target.race + "<br/>" + d.value + "%")
             .style("left", (d3.event.pageX) + "px")
-            .style("top", (d3.event.pageY - 28) + "px");
+            .style("top", (d3.event.pageY - 40) + "px");
     })
         .on("mouseout", function(d, i) {
             d3.select(this).transition().duration('50')
@@ -88,6 +85,27 @@ d3.json("data/sankey-formatted.json", function(error, graph) {
             .on("start", function() {
                 this.parentNode.appendChild(this); })
             .on("drag", dragmove));
+
+
+    node.on("mouseover", function(d) {
+        d3.select(this).transition()
+            .duration('50')
+        div.transition()
+            .duration(1000)
+            .style("opacity", .9);
+        div.html( "Percent of Total Population" + d.source.total)
+            .style("left", (d3.event.pageX) + "px")
+            .style("top", (d3.event.pageY) + "px");
+    })
+        .on("mouseout", function(d, i) {
+            d3.select(this).transition().duration('50')
+            div.transition()
+                .duration(200)
+                .style("opacity", 0);
+
+        });
+
+
 
 // add the rectangles for the nodes
     node.append("rect")
