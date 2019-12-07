@@ -4,7 +4,7 @@ class PcpVis {
     constructor(data) {
         this.data = data;
         const margin = {top: 30, right: 10, bottom: 10, left: 0};
-        this.width = 1000 - margin.left - margin.right;
+        this.width = 1300 - margin.left - margin.right;
         this.height = 600 - margin.top - margin.bottom;
         this.svg = d3.select("#pcp-chart")
             .append("svg")
@@ -39,7 +39,6 @@ class PcpVis {
 
     updateVis(county) {
         const vis = this;
-
         // Current Selections
         if (!county) {
             county = this.defaultCounty;
@@ -106,7 +105,7 @@ class PcpVis {
                 if (shouldBeHighlighted(d)) {
                     d3.select(this).style("stroke-width", "2px").style("stroke", "#B37029").style("opacity", 0.8)}
                 else {
-                    d3.select(this).style("stroke-width", "1px").style("stroke", "#756966")
+                    d3.select(this).style("stroke-width", "1px").style("stroke", "#756966").style("opacity", 0.2)
                 }});
 
         // Draw the axis
@@ -114,7 +113,7 @@ class PcpVis {
         // For each dimension of the dataset I add a 'g' element:
             .data(Object.keys(vis.y)).enter()
             .append("g")
-            .style("font-size", "14px")
+            .style("font-size", "18px")
             // I translate this element to its right position on the x axis
             .attr("transform", d => "translate(" + vis.x(d) + ")")
             // And I build the axis with the call function
@@ -123,7 +122,8 @@ class PcpVis {
             // Add axis title
             .append("text")
             .style("text-anchor", "middle")
-            .attr("y", -9)
+            .attr("class", "pcp-label")
+            .attr("y", -15)
             .text(d => d)
             .style("fill", "black");
     }

@@ -271,6 +271,13 @@ div.tooltip {
 	stroke: orange;
 }
 
+text {
+	font-family: "GothamLight";
+}
+
+text.pcp-label {
+	font-family: "GothamBold";
+
 .map-svg {
 	background-color: #dcdbd5;
 }
