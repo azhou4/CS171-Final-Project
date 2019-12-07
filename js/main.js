@@ -26,10 +26,6 @@ function updateHometown() {
     document.getElementById("amy").innerHTML = "You are currently viewing " + document.getElementById("hometown").value + "."
 }
 
-
-//console.log("You are currently viewing " + document.getElementById("hometown").value)
-
-
 var myLayout = new fullpage('#fullpage', {
     //options here
     anchors:['home', 'section1', 'section2', 'section3', 'section4', 'section5', 'section6', 'section7', 'section8', 'section9', 'section10'],
