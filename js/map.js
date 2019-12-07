@@ -7,6 +7,7 @@ class MapVis {
         this.height = 550;
         const svg = d3.select("#map")
             .append("svg")
+            .attr("class", "map-svg")
             .attr("width", this.width)
             .attr("height", this.height)
             .call(d3.zoom().on("zoom", function () {

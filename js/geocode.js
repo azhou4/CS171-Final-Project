@@ -5,6 +5,7 @@ function initialize() {
 
 function getLatLong(id) {
     const address = document.getElementById(id).value;
+    console.log("ADDRESS", address);
     $("#hometown").val(address);
     $("#hometown-map").val(address);
     geocoder.geocode( { 'address': address}, function(results, status) {
@@ -15,4 +16,7 @@ function getLatLong(id) {
             alert('Geocode was not successful for the following reason: ' + status);
         }
     });
+
+    updateHometown();
+
 }
