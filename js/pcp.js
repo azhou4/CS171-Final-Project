@@ -1,6 +1,5 @@
-
+// Create the Parallel Coordinate Plot Vis
 class PcpVis {
-
     constructor(data) {
         this.data = data;
         const margin = {top: 30, right: 10, bottom: 10, left: 0};
