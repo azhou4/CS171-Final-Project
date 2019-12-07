@@ -9,20 +9,16 @@ STATES="01 02 04 05 06 08 09 10 11 12 13 15 16 17 18 19 20 21 22 23 24 25 26 27 
 # The ACS 5-Year Estimate vintage.
 YEAR=2014
 
-# Download the census tract boundaries.
+# Download the county boundaries.
 # Extract the shapefile (.shp) and dBASE (.dbf).
 for STATE in ${STATES}; do
   if [ ! -f tl_2019_${STATE}_cousub.shp ]; then
     curl -o tl_2019_${STATE}_cousub.zip \
           "https://www2.census.gov/geo/tiger/TIGER2019/COUSUB/tl_2019_${STATE}_cousub.zip"
-#      "https://www2.census.gov/geo/tiger/GENZ${YEAR}/shp/cb_${YEAR}_${STATE}_tract_500k.zip" # census-tract level
     unzip -o \
       tl_2019_${STATE}_cousub.zip \
       tl_2019_${STATE}_cousub.shp \
       tl_2019_${STATE}_cousub.dbf
-#      cb_${YEAR}_${STATE}_tract_500k.zip \
-#      cb_${YEAR}_${STATE}_tract_500k.shp \
-#      cb_${YEAR}_${STATE}_tract_500k.dbf
   fi
 done
 
@@ -41,5 +37,4 @@ if [ ! -f county_topo.json ]; then
     | topoquantize 1e5 \
     > county_topo.json
 fi
-#    | topomerge -k 'd.id.slice(0, 5)' counties=tracts \ this line was right after doone
 

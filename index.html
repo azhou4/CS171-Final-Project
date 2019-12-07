@@ -74,7 +74,7 @@
                     <h1 style="margin-right: 50px">Social Mobility in the U.S. is Lower than in Other Countries'</h1>
                     <p style="font-size: 20px">The higher the intergenerational earning elasticity, the lower the chance of social mobility.</p>
                     <div class="form-group">
-                        <select style = "width: 250px" class="form-control" id="selection" onchange="updateHVis()">
+                        <select style = "width: 250px" class="form-control" id="selection" onchange="updateBarChart()">
                             <option>Highest to Lowest</option>
                             <option>Lowest to Highest</option>
                             <option>Alphabetical</option>
@@ -148,7 +148,15 @@
                     has a great effect on one's chances of reaching the Top 20 income percentile.</p>
                 <div id="map-selections">
                     <div class="form-group">
-                        <label for="race">Race/Ethnicity</label>
+                    <label for="gender">Gender</label>
+                    <select class="form-control" id="gender" onchange="updateVis()">
+                        <option value="pooled">All</option>
+                        <option value="female">Female</option>
+                        <option value="male">Male</option>
+                    </select>
+                </div>
+                    <div class="form-group">
+                        <label for="race">Race/ethnicity</label>
                         <select class="form-control" id="race" onchange="updateVis()">
                             <option value="asian">Asian</option>
                             <option value="black">Black</option>
@@ -157,14 +165,7 @@
                             <option value="white">White</option>
                             <option value="other">Other</option>
                         </select>
-                    </div><div class="form-group">
-                    <label for="gender">Gender</label>
-                    <select class="form-control" id="gender" onchange="updateVis()">
-                        <option value="pooled">All</option>
-                        <option value="female">Female</option>
-                        <option value="male">Male</option>
-                    </select>
-                </div>
+                    </div>
                     <div class="form-group">
                         <label for="parent-percentile">Parent Income Percentile</label>
                         <select style="width:350px" class="form-control" id="parent-percentile" onchange="updateVis()">
@@ -204,7 +205,15 @@
 
                 <div class="form-group">
                     <div class="form-group">
-                        <label for="pcp-race">Race/Ethnicity</label>
+                        <label for="pcp-gender">Gender</label>
+                        <select style = "width: 150px" class="form-control" id="pcp-gender" onchange="updatePcp()">
+                            <option value="All">All Genders</option>
+                            <option value="Female">Female</option>
+                            <option value="Male">Male</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="pcp-race">Race/ethnicity</label>
                         <select style = "width: 150px" class="form-control" id="pcp-race" onchange="updatePcp()">
                             <option>All Races</option>
                             <option>White</option>
@@ -216,15 +225,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="pcp-gender">Gender</label>
-                        <select style = "width: 150px" class="form-control" id="pcp-gender" onchange="updatePcp()">
-                            <option value="All">All Genders</option>
-                            <option value="Female">Female</option>
-                            <option value="Male">Male</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="pcp-income">Parent Income Percentile</label>
+                        <label for="pcp-income">Parental Income Percentile</label>
                         <select style = "width: 350px" class="form-control" id="pcp-income" onchange="updatePcp()">
                             <option value="all">All Income Percentiles</option>
                             <option value="p100">Top 1% (100th percentile)</option>
@@ -375,6 +376,7 @@
     <script src="js/geocode.js"></script>
     <script type='text/javascript' src='config.js'></script>
     <script>
+        // Get Google Maps API
         window.addEventListener('load',function(){
             const script = document.createElement('script');
             script.type = 'text/javascript';
@@ -389,7 +391,7 @@
     <script src="js/main.js"></script>
     <script src="js/pcp.js"></script>
     <script src="js/pipeline2.js"></script>
-    <script src="js/horizontal.js"></script>
+    <script src="js/barChart.js"></script>
 
 </body>
 </html>
