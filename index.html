@@ -57,21 +57,21 @@
                 <div class="col-sm">
                     <h1 class="page-title">What is Social Mobility?</h1>
                     <br><br>
-                    <p style="font-size:20px"><b>Social Mobility</b> is the upward or downward movement of Americans from one
+                    <p style="font-size:20px; text-align: left"><b>Social Mobility</b> is the upward or downward movement of Americans from one
                         social class or economic level to another, through job changes, inheritance, marriage,
                         connections, tax changes, innovation, illegal activities, hard work, lobbying, luck, health
                         changes or other factors.
                     </p>
-                    <p style="font-size:20px"> A 2013 Brooking Institution study found income inequality was
+                    <p style="font-size:20px; text-align: left"> A 2013 Brooking Institution study found income inequality was
                         increasing and becoming more permanent, sharply reducing social mobility.</p>
 
-                    <p style="font-size:20px"> In particular, in
-                        recent years, several studies have found that <b>intergenerational mobility</b> -- the degree in which
+                    <p style="font-size:20px; text-align: left"> In particular, in
+                        recent years, several studies have found that <b>intergenerational mobility</b> -- the degree to which
                         children do better or worse than their parents economically -- is lower in the US
                         than in some European countries. </p>
                 </div>
                 <div class="col-sm">
-                    <h1 style="margin-right: 50px">The United States's Social Mobility is Lower than Other Countries'</h1>
+                    <h1 style="margin-right: 50px">Social Mobility in the U.S. is Lower than in Other Countries'</h1>
                     <p style="font-size: 20px">The higher the intergenerational earning elasticity, the lower the chance of social mobility.</p>
                     <div class="form-group">
                         <select style = "width: 250px" class="form-control" id="selection" onchange="updateHVis()">
@@ -124,7 +124,7 @@
                         different races in America. The width of the connections represents a flow rate, and is a
                         proportion of the entire population. Looking at the data, it's clear that the level of social mobility is not the same for every American.
                         When we account for race, it’s clear that downward mobility is much higher among black Americans
-                        and American Indians compared to white, Hispanic, or Asian Americans. </p>
+                        and Native Americans compared to white, Hispanic, or Asian Americans. </p>
         </div>
         <!-- Page 5 -->
         <div class="section container">
@@ -136,8 +136,9 @@
                 <h1>Probability of Reaching the Top 20% of the National Income Distribution</h1>
                 <p>Besides race, one factor that perhaps unsurprisingly affects
                     social mobility is hometown or geographic location. Hometown can account for multiple factors like population
-                    demographics, racial segregation, quality of education, living quality, and more. Our data shows that the county you are from has a great
-                    effect on the probability in which to reach the Top 20 income percentile.</p>
+                    demographics, racial segregation, quality of education, living quality, and more. Our data shows
+                    that the county you are from has a great effect on your probability to reach the Top 20
+                    income percentile.</p>
                 <div id="map-selections">
                     <div class="form-group">
                         <label for="race">Race/ethnicity</label>
@@ -169,7 +170,7 @@
                         </select>
                     </div>
                     <div class="autocomplete" style="width:300px;">
-                        <label for="hometown-map">I grew up in </label>
+                        <label for="hometown-map">U.S. Hometown</label>
                         <input id="hometown-map" type="text" name="myHometown" placeholder="Hometown" value="" onchange="getLatLong('hometown-map')">
                     </div>
                     <div id="loading">Loading...</div>
@@ -181,12 +182,12 @@
         </div>
         <!-- Page 5 -->
         <div class="section">
-            <img src="img/opportunity.jpeg" style="width:50%">
             <h2 style="margin-left: 200px; margin-right: 200px; margin-top: 100px">It's not just race and hometown that affect social
                 mobility. Many other factors like gender, education, parental upbringing, and more affect our social mobility to
                 varying levels. We compiled data from the Opportunity Insights project to show how some of these factors will
                 affect your income percentile. In the next visualizations, we invite you to not only try out your demographics but also
                 test out different variables to witness the effects of these factors.</h2>
+            <img src="img/opportunity.jpeg" style="width:50%">
         </div>
 
         <!-- Page 6 -->
@@ -245,8 +246,8 @@
                         However, our data clearly shows that not all groups have benefitted equally from this economic growth. An
                         individual's chance at upward mobility can vary greatly by race, gender, hometown, parental income, or other factors.
                         There are still many inequalities in today's America that need to be addressed
-                        including racial segregation, gender wage gap, and more. Manufacturing, an industry that historically provided stable jobs
-                        and decent pay to less-educated workers has been declining for a while now and was particularly hard hit by the recession from 2007 to 2009.
+                        including racial segregation, the gender wage gap, and more. Manufacturing, an industry that historically provided stable jobs
+                        and decent pay to less-educated workers, has been declining for a while now and was particularly hard hit by the recession from 2007 to 2009.
                         In the wake of this decline, most of the jobs available for less-educated workers tend to be low-paying service industry jobs, contributing to
                         lower absolute mobility than we've seen in the past.
                     </p>
