@@ -13,6 +13,8 @@ const colors = {
 let map;
 let pcp;
 let barChart;
+
+// Load data
 queue()
     .defer(d3.csv, "data/internationalmobility.csv")
     .defer(d3.json, "data/kir_top20_county.json")

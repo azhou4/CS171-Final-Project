@@ -56,7 +56,7 @@ var div = d3.select("body").append("div")
         div.transition()
             .duration(900)
             .style("opacity", .9);
-        div.html(d.source.race + " -> " + d.target.race + "<br/>" + d.value + "%")
+        div.html( d.value + "% of " + d.source.race + " people land in the  " + d.target.race + "<br/>" )
             .style("left", (d3.event.pageX) + "px")
             .style("top", (d3.event.pageY - 40) + "px");
     })
