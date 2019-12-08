@@ -109,7 +109,7 @@ class SankeyDiagram {
         // the function for moving the buckets up and down and left to right
         function bucketSlide(a) {
             d3.select(this).attr("transform",
-                "translate(" + (a.x = Math.max(0, Math.min(width - a.dx, d3.event.x))) + "," + (
+                "translate(" + (a.x = Math.max(0, Math.min(vis.width - a.dx, d3.event.x))) + "," + (
                     a.y = Math.max(0, Math.min(vis.height - a.dy, d3.event.y))) + ")");
             vis.sankey.relayout();
             vis.flow.attr("d", vis.direction);
