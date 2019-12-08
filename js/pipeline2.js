@@ -88,8 +88,6 @@ var div = d3.select("body").append("div")
                 this.parentNode.appendChild(this); })
             .on("drag", bucketSlide));
 
-
-
 // rectangles are created for the nodes of the sankey graph
     buckets.append("rect")
         .attr("height", function(d) { return d.dy; })
