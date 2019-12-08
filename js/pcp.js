@@ -94,7 +94,7 @@ class PcpVis {
             .style("fill", "none")
             .style("font-size", "14px")
             .style("stroke", d => shouldBeHighlighted(d) ? "#B37029" : "#756966")
-            .style("opacity", d => shouldBeHighlighted(d) ? .8 : .2)
+            .style("opacity", d => shouldBeHighlighted(d) ? 0.8 : 0.2)
             .style("stroke-width", d => shouldBeHighlighted(d) ? "2px" : "1px")
             .on("mouseover", function(d) {
                 console.log(d, shouldBeHighlighted(d));
