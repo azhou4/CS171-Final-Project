@@ -1,6 +1,6 @@
 # Social Mobility in America
 
-Welcome to our Github Repository! Our website can be found at: https://amymzhou.com/CS171-Final-Project/#home and our screencast can be found at 
+Welcome to our Github Repository! Our website can be found at: https://amymzhou.com/CS171-Final-Project/#home and our screencast can be found at https://youtu.be/WXLtsKODIyU
 
 Our goal for this project was to create an interactive story describing the state of social mobility in America. We took datasets
 from the Opportunity Insights Project, headed by Harvard's Professor Raj Chetty, and as well as an international mobility dataset from Economic Policy Institute. We coded this project using Javascript, D3, JQuery, and Python for data cleaning. For formatting and layout, we used Bootstrap and FullPage.
