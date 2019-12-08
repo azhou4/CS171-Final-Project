@@ -17,11 +17,12 @@ let barChart;
 // Load data
 queue()
     .defer(d3.csv, "data/internationalmobility.csv")
+    .defer(d3.json, "data/sankey-formatted.json")
     .defer(d3.json, "data/kir_top20_county.json")
     .defer(d3.json, "data/kir_county.json")
-    .await(function(error, internationalMobility, top20KirData, aveKirData){
+    .await(function(error, internationalMobility, sankeyData, top20KirData, aveKirData){
+        sankeyDiagram = new SankeyDiagram(sankeyData);
         barChart = new BarChart(internationalMobility);
-        // barChart.updateHVis();
         map = new MapVis(top20KirData);
         pcp = new PcpVis(aveKirData);
     });
