@@ -12,7 +12,6 @@ function getLatLong(id) {
     // Query Google Maps Geocoding API
     geocoder.geocode( { 'address': address}, function(results, status) {
         if (status === 'OK') {
-            console.log("selected location: ", [results[0].geometry.location.lng(), results[0].geometry.location.lat()]);
             updateVis([results[0].geometry.location.lng(), results[0].geometry.location.lat()]);
         } else {
             alert('Geocode was not successful for the following reason: ' + status);
