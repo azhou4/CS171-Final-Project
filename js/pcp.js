@@ -109,7 +109,7 @@ class PcpVis {
                 if (vis.shouldBeHighlighted(d)) {
                     d3.select(this).style("stroke-width", "2px").style("stroke", colors.darkOrange).style("opacity", 0.8)}
                 else {
-                    d3.select(this).style("stroke-width", "1px").style("stroke", colors.gray)
+                    d3.select(this).style("stroke-width", "1px").style("stroke", colors.gray).style("opacity", 0.2)
                 }});
     }
 
