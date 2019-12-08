@@ -34,6 +34,11 @@ d3.json("data/sankey-formatted.json", function(info, grid) {
         .links(grid.links)
         .layout(25);
 
+// Define the div for the tooltip
+var div = d3.select("body").append("div")
+    .attr("class", "tooltip")
+    .style("opacity", 0);
+
 // create the links that flow between the buckets
     var flow = svg.append("g").selectAll(".link")
         .data(grid.links)
